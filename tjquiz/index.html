@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Concurso TJ-RO</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Concurso TJ-RO</h1>
+    </div>
+    <div class="container">
+        <div class="section">
+            <div class="section-title">ÁREAS DE CONHECIMENTO - QUIZ</div>
+            <button class="button" id="quiz1"  onclick="attemptQuiz('quiz1', 'História e Geografia de Rondônia')">HISTÓRIA E GEOGRAFIA DE RONDÔNIA</button>
+            <button class="button" id="quiz2"  onclick="attemptQuiz('quiz2', 'Conhecimentos Transversais')">CONHECIMENTOS TRANSVERSAIS</button>
+            <button class="button" id="quiz3" onclick="attemptQuiz('quiz3', 'Português')">PORTUGUÊS</button>
+        </div>
+        <div class="section">
+            <div class="section-title">PROVAS ESPECÍFICAS</div>
+            <button class="button" id="quiz4" onclick="attemptQuiz('quiz4', 'Igualdade')">IGUALDADE</button>
+            <button class="button" id="quiz5" onclick="attemptQuiz('quiz5', 'Grupo Vulneráveis')">GRUPO VULNERÁVEIS</button>
+            <button class="button" id="quiz6" onclick="attemptQuiz('quiz6', 'Direito Civil')">DIREITO CIVIL</button>
+        </div>
+    </div>
+    <div class="footer">
+      <a href="../index.html">Pagina Principal</a>
+        © 2024 Concurso TJ-RO. Todos os direitos reservados.
+    </div>
+
+    <script>
+
+const quizzes = {
+  "História e Geografia de Rondônia": { completed: false, completedAt: null },
+  "Português": { completed: false, completedAt: null },
+  "Conhecimentos Transversais": { completed: false, completedAt: null },
+  "Direito Civil": { completed: false, completedAt: null },
+  "Igualdade": { completed: false, completedAt: null },
+  "Grupo Vulneráveis": { completed: false, completedAt: null },
+};
+
+// Mapeamento de nomes de arquivos para cada quiz
+const quizPaths = {
+  "História e Geografia de Rondônia": "quiz-historia.html",
+  "Português": "quiz-portugues.html",
+  "Conhecimentos Transversais": "quiz-conhecimentos.html",
+  "Direito Civil": "quiz-direito-civil.html",
+  "Igualdade": "quiz-igualdade.html",
+  "Grupo Vulneráveis": "quiz-grupo-vulneraveis.html",
+};
+
+// Container onde os botões de quiz serão adicionados
+const quizContainer = document.getElementById("quiz-container");
+
+Object.keys(quizzes).forEach((quiz) => {
+  const button = document.createElement("button");
+  button.classList.add("quiz-button");
+
+  if (quizzes[quiz].completed) {
+    const remainingTime = 24 - Math.floor((Date.now() - quizzes[quiz].completedAt) / (1000 * 60 * 60));
+    if (remainingTime > 0) {
+      button.textContent = `${quiz} (Bloqueado)`;
+      button.disabled = true;
+      button.title = `Disponível em ${remainingTime} horas`;
+    } else {
+      button.textContent = quiz;
+      button.onclick = () => {
+        quizzes[quiz].completed = true;
+        quizzes[quiz].completedAt = Date.now();
+        window.location.href = quizPaths[quiz];
+      };
+    }
+  } else {
+    button.textContent = quiz;
+    button.onclick = () => {
+      quizzes[quiz].completed = true;
+      quizzes[quiz].completedAt = Date.now();
+      window.location.href = quizPaths[quiz];
+    };
+  }
+
+  quizContainer.appendChild(button);
+});
+
+
+        function attemptQuiz(quizId, quizName) {
+            const quizData = localStorage.getItem(quizId);
+
+            if (quizData) {
+                const quizInfo = JSON.parse(quizData);
+                const now = new Date().getTime();
+                const timeRemaining = quizInfo.unlockTime - now;
+
+                if (timeRemaining > 0) {
+                    const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                    alert(`Você já concluiu este quiz. Tente novamente em ${hours}h e ${minutes}m.`);
+                    return;
+                }
+            }
+
+            const confirmAttempt = confirm(`Você está prestes a iniciar o quiz: ${quizName}. Deseja continuar?`);
+            if (confirmAttempt) {
+                startQuiz(quizId);
+            }
+        }
+
+        function startQuiz(quizId) {
+            // Simulação de conclusão do quiz
+            alert("Quiz iniciado! Após finalizar, ele será bloqueado por 24 horas.");
+            const now = new Date().getTime();
+            const unlockTime = now + (24 * 60 * 60 * 1000); // 24 horas
+
+            localStorage.setItem(quizId, JSON.stringify({
+                completed: true,
+                unlockTime: unlockTime
+            }));
+
+            // Redirecionar para o quiz real (exemplo)
+            window.location.href = `/${quizId}.html`;
+        }
+
+        function checkQuizStatus() {
+            const buttons = document.querySelectorAll('.button');
+
+            buttons.forEach(button => {
+                const quizId = button.id;
+                const quizData = localStorage.getItem(quizId);
+
+                if (quizData) {
+                    const quizInfo = JSON.parse(quizData);
+                    const now = new Date().getTime();
+
+                    if (quizInfo.unlockTime > now) {
+                        button.classList.add('disabled');
+                        button.innerText += ' (Bloqueado)';
+                    }
+                }
+            });
+        }
+
+        // Verifica o status dos quizzes ao carregar a página
+        window.onload = checkQuizStatus;
+    </script>
+</body>
+</html>

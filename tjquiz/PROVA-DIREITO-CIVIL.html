@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROVA DE DIREITO civil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="quiz-container">
+    <div id="question-container" class="question-container">
+        <!-- Perguntas serão carregadas aqui -->
+    </div>
+    <div class="result-container" style="display:none;">
+        <p id="result-text"></p>
+        <button onclick="restartQuiz()">Iniciar novamente</button>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        {
+            
+        "question": "1. (Instituto CONSULPLAN/Analista do Executivo/SEGER ES/2023) No período em que a norma se encontra em vacatio legis, mesmo que ocorram os fatos previstos no texto legal, estes não apresentarão caráter jurídico, e seguirão sem aptidão para surtir os resultados esperados. Sobre o período em que a lei já se encontra publicada e o momento em que ela tem preenchidas as condições para produzir efeitos concretos, assinale a afirmativa correta.",
+        "options": [
+            "A) A lei se encontra vigente; todavia, ainda não é eficaz.",
+            "B) Juridicamente, a lei ainda não se considera existente.",
+            "C) A lei considera-se existente; contudo, não tem ainda vigência.",
+            "D) A lei já será eficaz, ficando sua validade condicionada ao termo.",
+            "E) Se houver alteração no texto da lei, não será necessário republicação."
+        ],
+        "correctAnswer": "C"
+    },
+    {
+        "question": "2. (Instituto CONSULPLAN/Analista em Desenvolvimento Social/SEAS RO/2023) No dia 03/03/2022 foi publicada a Lei nº 0001/2022, com imediata vigência, revogando totalmente a Lei nº 0099/2021. Em 07/07/2022, a Lei nº 0002/2022 revogou totalmente a Lei nº 0001/2022. Nos termos do Decreto-Lei nº 4.657/42 (Lei de Introdução às Normas do Direito Brasileiro), assinale a afirmativa correta.",
+        "options": [
+            "A) A repristinação é vedada no ordenamento jurídico brasileiro.",
+            "B) A Lei nº 0002/2022 só poderá revogar totalmente a Lei nº 0001/2022 se for uma lei complementar.",
+            "C) A Lei nº 0099/2021 entrará novamente em vigor, caso a Lei nº 0002/2022, assim preveja de forma expressa.",
+            "D) A repristinação só poderá ocorrer nos casos de controle concentrado de constitucionalidade das leis pelo STF.",
+            "E) Com a revogação total da Lei nº 0001/2022, ocorrerá a repristinação, pelo que a Lei nº 0099/2021 voltará automaticamente a viger no ordenamento jurídico."
+        ],
+        "correctAnswer": "C"
+    },
+    {
+        "question": "3. (Instituto CONSULPLAN/Assistente Jurídico/CORE ES/2023) Ninguém pode alegar desconhecimento de lei para justificar a sua inobservância. Neste sentido, compreender a vigência da lei no tempo e no espaço é fundamental. No que tange à vigência da lei, assinale a afirmativa correta.",
+        "options": [
+            "A) O efeito conhecido por repristinação ocorre quando a lei posterior é incompatível com a lei anterior, ou quando a lei nova regule inteiramente a matéria que tratava a lei anterior.",
+            "B) A lei nova, com disposições gerais, revoga a lei anterior especial por um critério lógico temporal. A lei nova especial revoga a anterior com disposições gerais por um critério hierárquico de comando.",
+            "C) Havendo nova publicação de texto de lei antes desta entrar em vigor destinada à sua correção, a regra geral de início da vigência, salvo disposição em contrário de quarenta e cinco dias depois de oficialmente publicada, será contado da nova publicação.",
+            "D) Quando um texto de lei expressamente indica que a lei anterior deixa de valer e será integralmente substituída pela lei nova, este ato jurídico ganha o nome de “derrogação” e, por força legal, entra em vigor imediatamente a nova lei, não sendo possível manter, neste caso, a validade da lei anterior durante eventual vacatio legis."
+        ],
+        "correctAnswer": "C"
+    },
+    {
+        "question": "4. (Instituto CONSULPLAN/Analista de Licitação/CM Pouso Alegre/2023) Sobre a vigência das leis no Brasil, salvo disposição em contrário, a lei começa a vigorar em todo o país quanto tempo depois de oficialmente publicada?",
+        "options": [
+            "A) Entra imediatamente, assim que publicada.",
+            "B) Trinta dias.",
+            "C) Quarenta e cinco dias.",
+            "D) Noventa dias."
+        ],
+        "correctAnswer": "C"
+    },
+    {
+    "question": "5. (Instituto CONSULPLAN/Analista Legislativo/CM Itabira/2022) NÃO está em consonância com a Lei de Introdução às normas do Direito Brasileiro:",
+    "options": [
+        "a) As correções a texto de Lei já em vigor consideram-se Lei nova.",
+        "b) Não se destinando à vigência temporária, a Lei terá vigor até que outra a modifique ou revogue.",
+        "c) Salvo disposição em contrário, a Lei revogada não se restaura por ter a Lei revogadora perdido a vigência.",
+        "d) A Lei nova, que estabeleça disposições gerais ou especiais a par das já existentes, acaba por revogar ou modificar a Lei anterior."
+    ],
+    "correctAnswer": "D"
+},
+    {
+    "question": "6. (Instituto CONSULPLAN/Procurador Municipal/Pref. de Caeté/2022) A Lei Federal nº 0001 foi publicada em 01/01/2022; contudo, não apresentou na parte final de seu texto indicação expressa referente ao período de vacatio legis. De acordo com o Decreto-Lei nº 4.657/1942 (Lei de Introdução às Normas do Direito Brasileiro), a Lei nº 0001 terá vigência a partir de:",
+    "options": [
+        "A) Noventa dias depois de sua publicação.",
+        "B) Três meses depois de sua promulgação.",
+        "C) Quarenta e cinco dias depois de sua publicação.",
+        "D) Quarenta e cinco dias depois de sua promulgação."
+    ],
+    "correctAnswer": "C"
+},
+{
+    "question": "7. (Instituto CONSULPLAN/Notário e Registrador-Provimento/TJ MS/2021) Um estado da federação legislou concedendo medida de incentivo à doação de sangue, por meio da garantia de pagamento de meia entrada para doadores regulares de sangue em todos os estabelecimentos mantidos pelas entidades e órgãos da administração pública e privada daquele ente. Para tanto o texto de lei em questão esclareceu que se consideram doadores regulares de sangue aqueles registrados no hemocentro e nos bancos de sangue dos hospitais do Estado, identificados por documento oficial expedido pela Secretaria de Estado da Saúde – SESA. Considerando a situação hipotética de lei posterior que cuide de estabelecer disposições especiais pertinentes à lei mencionada no caput, tem-se por correta a afirmativa acerca da vigência do texto de lei inicial:",
+    "options": [
+        "A) A especialidade das previsões de nova lei implica a revogação do texto de lei anterior.",
+        "B) A lei nova apenas modifica a lei anterior, em razão da previsão de disposições especiais.",
+        "C) O texto de lei inicial é revogado, tendo em vista a especialidade das disposições contempladas na lei posterior.",
+        "D) Permanece vigente e inalterado o texto de lei original, vez que lei nova que preveja disposições gerais ou especiais consoantes as existentes não tem força para alterá-lo ou retirar-lhe vigência."
+    ],
+    "correctAnswer": "D"
+},
+{
+    "question": "8. (Instituto CONSULPLAN/Residente Jurídico/PGE ES/2022) Nos termos da Lei de Introdução às Normas do Direito Brasileiro, assinale a afirmativa correta.",
+    "options": [
+        "A) Um governo estrangeiro pode ter sede diplomática no Brasil; porém, lhe é vedado adquirir bens imóveis ou investir em fundos imobiliários.",
+        "B) A lei ordinária entra em vigência, como regra, na data de sua publicação; todavia, a lei complementar vigirá 90 (noventa) dias após sua divulgação oficial.",
+        "C) O magistrado decidirá os casos a ele submetidos com base em princípios gerais do direito, costumes ou mesmo analogia, nas hipóteses em que a lei for omissa.",
+        "D) Uma súmula administrativa, emitida por um Tribunal de Contas, tem caráter vinculante para o órgão a que se destina, não se aplicando o efeito vinculante para respostas a consultas."
+    ],
+    "correctAnswer": "C"
+},
+{
+    "question": "9. (Instituto CONSULPLAN/Procurador Municipal/Pref. de Pitangueiras/2019) Os artigos 4º e 5º da Lei de Introdução às Normas do Direito Brasileiro preveem meios de preenchimento de lacunas da Lei. Por tais previsões, é possível afirmar, nas palavras da Doutrinadora Maria Helena Diniz, que “o Direito não é lacunoso, mas há lacunas”. Considerando a classificação consagrada pela doutrina, sobre a classificação das lacunas, marque a alternativa correta.",
+    "options": [
+        "A) A antinomia é caracterizada pela ausência de norma prevista para um determinado caso concreto.",
+        "B) A lacuna normativa é caracterizada pela presença de norma para o caso concreto, mas que não tenha eficácia social.",
+        "C) A lacuna ontológica é caracterizada pelo choque de duas ou mais normas válidas, pendente de solução no caso concreto.",
+        "D) A lacuna axiológica é caracterizada pela presença da norma para o caso concreto, mas cuja aplicação seja insatisfatória ou injusta."
+    ],
+    "correctAnswer": "D"
+},
+{
+    "question": "10. (Instituto CONSULPLAN/Procurador/IPASEM/2022) Assinale, dentre as alternativas a seguir, aquela que NÃO está em conformidade com a Lei de Introdução às Normas do Direito Brasileiro.",
+    "options": [
+        "A) As correções a texto de lei já em vigor consideram-se lei nova.",
+        "B) Lei nova que estabelecer disposições especiais a par das já existentes, acaba por modificar a lei anterior.",
+        "C) O agente público responderá pessoalmente por suas decisões ou opiniões técnicas em caso de dolo ou erro grosseiro.",
+        "D) Nas esferas administrativa, controladora e judicial, não se decidirá com base em valores jurídicos abstratos sem que sejam consideradas as consequências práticas da decisão.",
+        "E) Na interpretação de normas sobre gestão pública, serão considerados os obstáculos e as dificuldades reais do gestor e as exigências das políticas públicas a seu cargo, sem prejuízo dos direitos dos administrados."
+    ],
+    "correctAnswer": "B"
+},
+{
+    "question": "11. (Instituto CONSULPLAN/Assistente Jurídico/PGE SC/2022) Em um processo judicial que, dentre outras questões, discute a possibilidade de aplicação de direito contido em lei estrangeira, o magistrado teve acesso à lei X, proveniente do país Bendistante. Ao analisar os termos da lei X, o magistrado percebeu que referido diploma normativo faz menção à lei XY. Nos termos da Lei de Introdução às Normas do Direito Brasileiro, assinale a afirmativa correta.",
+    "options": [
+        "a) O magistrado deve requerer autorização do STF para aplicação da lei estrangeira.",
+        "b) Não é permitido ao magistrado brasileiro aplicar uma lei estrangeira dentro do território nacional.",
+        "c) As leis estrangeiras poderão ser aplicadas no território nacional, ainda que ofendam a ordem pública e os bons costumes.",
+        "d) Na aplicação de lei estrangeira, o magistrado deve ater-se a ela, mas poderá usar remissão ou indicação que a lei estrangeira faça a uma outra lei.",
+        "e) Na aplicação de lei estrangeira, o magistrado deve ater-se a ela e não pode usar qualquer remissão ou indicação que a lei estrangeira faça a uma outra lei."
+    ],
+    "correctAnswer": "E"
+},
+{
+    "question": "12. (Instituto CONSULPLAN/Consultor Jurídico/CM Unaí/2022) Antônio, cidadão francês, domiciliado em Paris, casado e pai de um filho, ambos brasileiros, faleceu na Argentina. Na ocasião de seu falecimento, Antônio possuía três imóveis na cidade do Rio de Janeiro/RJ. No tocante aos três imóveis deixados por Antônio e, de acordo com o disposto na Lei de Introdução às Normas do Direito Brasileiro:",
+    "options": [
+        "a) Aplicar-se-á à sucessão dos bens de Antônio a lei francesa, sem exceção.",
+        "b) Aplicar-se-á à sucessão dos bens de Antônio a lei brasileira, sem exceção.",
+        "c) A sucessão dos bens deixados por Antônio será regulada pela lei do país em que ocorreu o seu óbito.",
+        "d) A sucessão dos bens deixados por Antônio será regulada pela lei brasileira, caso a lei estrangeira que se aplicar à sucessão de Antônio não seja a mais favorável aos herdeiros."
+    ],
+    "correctAnswer": "D"
+},
+{
+    "question": "13. (Instituto CONSULPLAN/Analista Júnior/FPTI/2022) A Fundação Parque Tecnológico Itaipu-Brasil pretende adquirir um terreno próximo à sua sede, situado em Foz do Iguaçu. O terreno pertence a Ramón Duartes, um paraguaio que reside na fronteira da Argentina com o Brasil. Nos termos da Lei de Introdução às Normas do Direito Brasileiro – LINDB, a competência para conhecer de ações relativas ao referido imóvel é da autoridade judiciária",
+    "options": [
+        "a) do Brasil, pois o imóvel se situa em Foz do Iguaçu.",
+        "b) do Brasil ou do Paraguai, pois a Fundação PTI é binacional.",
+        "c) do Paraguai, pois é a nacionalidade do proprietário do imóvel.",
+        "d) da Argentina, pois é o local de residência do proprietário do imóvel."
+    ],
+    "correctAnswer": "A"
+},
+{
+    "question": "14. (Instituto CONSULPLAN/Procurador Jurídico/Funprev/2021) Nos termos da Lei de Introdução às Normas do Direito Brasileiro, caso provado que determinado procurador municipal exarou opinião técnica com erro grosseiro e que deste ato tenha ocorrido dano ao erário, referido agente público:",
+    "options": [
+        "a) Não responderá por suas decisões ou opiniões técnicas.",
+        "b) Responderá pessoalmente por suas decisões ou opiniões técnicas.",
+        "c) Responderá objetivamente por suas decisões ou opiniões técnicas.",
+        "d) Não responderá por opiniões técnicas, mas apenas por suas decisões."
+    ],
+    "correctAnswer": "B"
+},
+{
+    "question": "15. (Instituto CONSULPLAN/Procurador Legislativo/CM Amparo/2020) Conforme dispõe a Lei de Introdução às Normas do Direito Brasileiro – LINDB, é correto afirmar que:",
+    "options": [
+        "a) Na aplicação de sanções, serão consideradas apenas a natureza e a gravidade da infração cometida e os danos que dela provierem para a Administração Pública.",
+        "b) Nas esferas administrativa, controladora e judicial, nas decisões com base em valores jurídicos abstratos, dispensa-se a apresentação das consequências práticas da decisão.",
+        "c) A decisão do processo, nas esferas administrativa, controladora ou judicial, não poderá prever compensação por benefícios indevidos resultantes da conduta dos envolvidos.",
+        "d) A decisão que, nas esferas administrativa, controladora ou judicial, decretar a invalidação de ato deverá indicar de modo expresso suas consequências jurídicas e administrativas."
+    ],
+    "correctAnswer": "D"
+},
+{
+    "question": "16. (Instituto CONSULPLAN/Juiz Leigo/TJ CE/2019) Nos termos das recentes alterações à Lei de introdução às normas do Direito Brasileiro, no que tange à atuação dos gestores públicos, é correto afirmar que:",
+    "options": [
+        "A) Os gestores públicos ficam impedidos de praticar atos administrativos discricionários.",
+        "B) O ato administrativo que invalidar uma norma administrativa prescinde de motivação.",
+        "C) O dever de motivação dos atos administrativos restou diminuído, em face da maior autonomia dos gestores.",
+        "D) As decisões com base em valores abstratos devem considerar as consequências práticas que delas advierem."
+    ],
+    "correctAnswer": "D"
+},
+{
+    "question": "17. (CONSULPLAN/Estagiário/MPE PA/2019) O Decreto-Lei nº 4.657, de 4 de setembro de 1942, regulamenta a Lei de Introdução às Normas de Direito Brasileiro (LINDB), antiga Lei de Introdução ao Código Civil. Sobre a Lei de Introdução às Normas de Direito Brasileiro (LINDB), assinale a afirmativa INCORRETA.",
+    "options": [
+        "A) O seu conteúdo interessa mais à Teoria Geral do Direito do que ao Direito Civil.",
+        "B) É tratada como norma de sobredireito, ou seja, norma jurídica que visa regulamentar outras normas. É conhecida, também, como lex legum.",
+        "C) Cabe à Lei de Introdução às Normas de Direito Brasileiro o papel de apontar as fontes do Direito Privado em complemento à própria lei.",
+        "D) O Decreto-Lei nº 4.657, que regulamenta a LINDB, sofreu alteração no ano de 2010 com a finalidade de levar o alcance de tal norma à esfera do Direito Internacional Privado."
+    ],
+    "correctAnswer": "D"
+},
+{
+    "question": "18. (CONSULPLAN/Analista Judiciário/TRE RJ/2017) No tocante à Lei de Introdução às normas do Direito Brasileiro, interprete o caso proposto e assinale a afirmativa juridicamente verdadeira. “A Lei nº 8.112/90 previa o direito de licença por assiduidade para os servidores federais. Posteriormente, a Lei nº 9.527/97 revogou o referido direito e o substitui por um direito à licença para capacitação. Supondo que seja aprovada a Lei “X” em 2017 revogando a Lei nº 9.527/97, poderá-se concluir que",
+    "options": [
+        "A) não existindo disposição em contrário, a Lei “X” terá vigência de cinco anos, prescrevendo após este período.",
+        "B) com a revogação da Lei nº 9.527/97, fica restaurado o direito de licença por assiduidade dos servidores federais.",
+        "C) salvo disposição em contrário, a Lei “X” começa a vigorar quarenta e cinco dias depois de oficialmente publicada.",
+        "D) a lei nova, em regra, tem vigência retroativa, cassando as licenças dos servidores federais que já se encontravam em gozo do direito."
+    ],
+    "correctAnswer": "C"
+},
+{
+    "question": "19. (CONSULPLAN/Juiz do Trabalho/TRT 1/2005) A revogação total de uma lei denomina-se:",
+    "options": [
+        "A) derrogação;",
+        "B) ab-rogação;",
+        "C) suspensão;",
+        "D) cessação;",
+        "E) presunção."
+    ],
+    "correctAnswer": "B"
+},
+{
+    "question": "20. (CONSULPLAN/Procurador/CM BH/2018) A Lei de Introdução às Normas do Direito Brasileiro – LINDB traz regras quanto à vigência e eficácia das leis, conflito de leis no tempo e no espaço, dentre outras. Quanto às disposições da referida lei, analise as afirmativas a seguir.\nI. As correções a texto de lei já em vigor consideram-se lei nova.\nII. Salvo disposição em contrário, a lei revogada não se restaura por ter a lei revogadora perdido a vigência.\nIII. Não se destinando à vigência temporária, a lei terá vigor até que outra a modifique ou revogue.\nIV. A lei posterior revoga a anterior quando expressamente o declare, quando seja com ela incompatível ou quando regule inteiramente a matéria de que tratava a lei anterior.\nEm relação à LINDB estão corretas as afirmativas",
+    "options": [
+        "A) I, II, III e IV.",
+        "B) I, II e III, apenas.",
+        "C) I, III e IV, apenas.",
+        "D) II, III e IV, apenas."
+    ],
+    "correctAnswer": "A"
+},
+{
+    "question": "21. (CONSULPLAN/Procurador/CM BH/2018) “A Lei de Introdução às Normas do Direito Brasileiro estatui expressamente que quando a lei for omissa, o juiz decidirá o caso de acordo com __________________.” Assinale a alternativa que NÃO completa corretamente a afirmativa anterior.",
+    "options": [
+        "A) analogia",
+        "B) costumes",
+        "C) princípios gerais do direito",
+        "D) fins sociais a que a lei se dirige"
+    ],
+    "correctAnswer": "D"
+},
+{
+    "question": "22. (CONSULPLAN/Analista Judiciário/TRE RS/2008) Conforme se depreende da Lei de Introdução ao Código Civil Brasileiro:",
+    "options": [
+        "A) A lei nova, que estabeleça disposições gerais ou especiais a par das já existentes, poderá revogar ou modificar a lei anterior.",
+        "B) A lei revogada jamais se restaurará por ter a lei revogadora perdido a vigência.",
+        "C) Consideram-se adquiridos os direitos que o seu titular ou alguém por ele, possa exercer, como aqueles cujo começo do exercício tenha termo pré-fixo ou condição pré-estabelecida inalterável, a arbítrio de outrem.",
+        "D) A lei começa a vigorar em todo o país sempre quarenta e cinco dias depois de oficialmente publicada."
+    ],
+    "correctAnswer": "C"
+},
+{
+    "question": "23. (CONSULPLAN/Notário e Registrador-Provimento/TJ MG/2019) Tendo em vista as disposições da Lei de Introdução às Normas do Direito Brasileiro, assinale a alternativa correta.",
+    "options": [
+        "A) Nos estados estrangeiros, a obrigatoriedade da lei brasileira, quando admitida, se inicia sessenta dias depois de oficialmente publicada.",
+        "B) A lei brasileira será aplicada ao casamento de estrangeiros realizado no Brasil, quanto aos impedimentos dirimentes e às formalidades da celebração.",
+        "C) Somente nas hipóteses em que estabeleça disposições gerais a par das já existentes a lei nova não revoga nem modifica a lei anterior, posto que se a lei nova estabelecer disposições especiais a par das já existentes, revogará a lei anterior.",
+        "D) O estrangeiro casado, que se naturalizar brasileiro, pode, independentemente de anuência do cônjuge, requerer ao juiz, no ato da entrega do decreto de naturalização, que se apostile ao mesmo a adoção do regime de comunhão parcial de bens, respeitados os direitos de terceiros e dada esta adoção ao competente registro."
+    ],
+    "correctAnswer": "B"
+},
+{
+    "question": "24. (CONSULPLAN/Notário e Registrador-Provimento/TJ MG/2019) Considerando a disciplina saída da Lei de Introdução às Normas do Direito Brasileiro, assinale a alternativa correta.",
+    "options": [
+        "a) A lei do último domicílio do falecido regula a capacidade para suceder.",
+        "b) A sucessão de bens de estrangeiros, situados no país, será regulada pela lei brasileira em benefício do cônjuge ou dos filhos brasileiros, mesmo nas hipóteses em que a lei pessoal do falecido lhes seja mais favorável.",
+        "c) As organizações destinadas a fins de interesse coletivo, como as sociedades e as fundações, obedecem à lei do Estado em que se constituírem, mas só poderão ter filiais no Brasil depois que os seus atos constitutivos forem aprovados pelo Governo brasileiro, ficando sujeitas à lei brasileira.",
+        "d) Os governos estrangeiros, bem como as organizações de qualquer natureza, que eles tenham constituído, dirijam ou hajam investido de funções públicas, poderão adquirir no Brasil bens imóveis além daqueles destinados à sede de sua representação, desde que essa aquisição seja precedida de autorização do Senado Federal."
+    ],
+    "correctAnswer": "C"
+}
+
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function showQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            document.getElementById("question-container").style.display = "none";
+            document.querySelector(".result-container").style.display = "block";
+            document.getElementById("result-text").innerHTML = `Você acertou ${score} de ${questions.length} perguntas.`;
+            return;
+        }
+
+        const question = questions[currentQuestionIndex];
+        const questionContainer = document.getElementById("question-container");
+
+        questionContainer.innerHTML = `
+            <p><strong>${question.question}</strong></p>
+            ${question.options.map((option, index) => 
+                `<div class="option" onclick="checkAnswer(${index})">${option}</div>`
+            ).join('')}
+        `;
+    }
+
+    function checkAnswer(selectedIndex) {
+    const question = questions[currentQuestionIndex];
+
+    // Verifique se a opção selecionada corresponde à resposta correta (usando a letra da resposta)
+    const correctAnswerIndex = ["A", "B", "C", "D","E"].indexOf(question.correctAnswer);
+
+    if (selectedIndex === correctAnswerIndex) {
+        score++;
+    }
+
+    currentQuestionIndex++;
+    showQuestion();
+}
+
+
+    function restartQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        document.querySelector(".result-container").style.display = "none";
+        document.getElementById("question-container").style.display = "block";
+        showQuestion();
+    }
+
+    showQuestion();
+</script>
+
+<a href="index.html">PAGINA INICIAL</a>
+</body>
+</html>

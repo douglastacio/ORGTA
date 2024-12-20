@@ -1,0 +1,220 @@
+<!DOCTYPE html> 
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Rondônia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="quiz-container">
+    <div id="question-container" class="question-container">
+        <!-- Perguntas serão carregadas aqui -->
+    </div>
+    <div class="result-container" style="display:none;">
+        <p id="result-text"></p>
+        <button onclick="restartQuiz()">Iniciar novamente</button>
+    </div>
+</div>
+
+<script>
+    const questions = [
+    {
+        "question": "Qual das opções abaixo descreve corretamente o que é uma sílaba tônica?",
+        "options": [
+            "a) Uma sílaba que sempre tem acento gráfico.",
+            "b) Uma sílaba que é pronunciada com mais força ou estresse.",
+            "c) Uma sílaba que não possui autonomia fonética.",
+            "d) Uma sílaba que sempre está no início da palavra."
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "Qual das palavras abaixo apresenta um monossílabo tônico?",
+        "options": [
+            "a) com",
+            "b) pó",
+            "c) de",
+            "d) em"
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "Qual é a principal diferença entre o acento agudo e o circunflexo?",
+        "options": [
+            "a) O acento agudo marca o timbre fechado, enquanto o circunflexo marca o timbre aberto.",
+            "b) O acento agudo aparece apenas em substantivos, e o circunflexo, em verbos.",
+            "c) O acento agudo marca o timbre aberto, enquanto o circunflexo marca o timbre fechado.",
+            "d) O acento agudo e o circunflexo são usados para diferenciar palavras idênticas."
+        ],
+        "correctAnswer": "c"
+    },
+    {
+        "question": "Em qual das palavras abaixo o acento gráfico tem a finalidade de diferenciar a classe gramatical?",
+        "options": [
+            "a) café",
+            "b) sábia",
+            "c) sabia",
+            "d) acúmulo"
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "Qual das palavras abaixo NÃO possui acento gráfico, mas possui acento tônico?",
+        "options": [
+            "a) café",
+            "b) saci",
+            "c) pé",
+            "d) avó"
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "Qual dos monossílabos abaixo é átono?",
+        "options": [
+            "a) pé",
+            "b) seu",
+            "c) de",
+            "d) pó"
+        ],
+        "correctAnswer": "c"
+    },
+    {
+        "question": "Qual alternativa apresenta corretamente o objetivo principal da acentuação gráfica em palavras como 'sabia', 'sabiá' e 'sábia'?",
+        "options": [
+            "a) Apenas destacar a sílaba tônica.",
+            "b) Indicar se a palavra é monossílaba ou polissílaba.",
+            "c) Diferenciar palavras com escrita igual.",
+            "d) Marcar o timbre da vogal."
+        ],
+        "correctAnswer": "c"
+    },
+    {
+        "question": "Em qual das palavras abaixo o acento gráfico não está relacionado à diferenciação de significado, mas sim ao timbre da vogal?",
+        "options": [
+            "a) avó",
+            "b) sabia",
+            "c) saci",
+            "d) acumulo"
+        ],
+        "correctAnswer": "d"
+    },
+    {
+        "question": "Qual das alternativas abaixo contém um exemplo de monossílabo tônico que também recebe acento gráfico?",
+        "options": [
+            "a) pó",
+            "b) de",
+            "c) em",
+            "d) sem"
+        ],
+        "correctAnswer": "a"
+    },
+    {
+        "question": "Na frase 'Embaixo estão as tarifas de hospedagem em baixa temporada', qual é a classificação do monossílabo 'em' na palavra 'embaixo'?",
+        "options": [
+            "a) Monossílabo tônico.",
+            "b) Monossílabo átono.",
+            "c) Parte da sílaba tônica da palavra.",
+            "d) Palavra com acento gráfico."
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "Qual é a principal função do acento gráfico nas palavras 'acumulo' e 'acúmulo'?",
+        "options": [
+            "a) Diferenciar o significado das palavras.",
+            "b) Indicar a classe gramatical das palavras.",
+            "c) Marcar a tonicidade da palavra.",
+            "d) Indicar o timbre fechado da vogal."
+        ],
+        "correctAnswer": "a"
+    },
+    {
+        "question": "Qual é a principal característica dos monossílabos átonos?",
+        "options": [
+            "a) São pronunciados com mais intensidade.",
+            "b) São pronunciados com menos intensidade e não têm autonomia fonética.",
+            "c) Sempre recebem acento gráfico.",
+            "d) São sempre usados no início das palavras."
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "Qual das palavras abaixo contém um acento circunflexo?",
+        "options": [
+            "a) avó",
+            "b) café",
+            "c) sábia",
+            "d) avô"
+        ],
+        "correctAnswer": "d"
+    },
+    {
+        "question": "Qual é a função principal da acentuação nas palavras 'sabiá' e 'sabia'?",
+        "options": [
+            "a) Marcar a tonicidade da palavra.",
+            "b) Indicar a diferença entre classes gramaticais.",
+            "c) Diferenciar palavras com a mesma grafia.",
+            "d) Indicar o timbre da vogal."
+        ],
+        "correctAnswer": "c"
+    },
+    {
+        "question": "Em relação ao uso do acento gráfico, qual das alternativas está correta?",
+        "options": [
+            "a) O acento agudo é usado para marcar o timbre fechado da vogal.",
+            "b) O acento circunflexo é usado para marcar o timbre aberto da vogal.",
+            "c) O acento gráfico pode mudar a classe gramatical das palavras.",
+            "d) Monossílabos tônicos nunca recebem acento gráfico."
+        ],
+        "correctAnswer": "c"
+    }
+];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function showQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            document.getElementById("question-container").style.display = "none";
+            document.querySelector(".result-container").style.display = "block";
+            document.getElementById("result-text").innerHTML = `Você acertou ${score} de ${questions.length} perguntas.`;
+            return;
+        }
+
+        const question = questions[currentQuestionIndex];
+        const questionContainer = document.getElementById("question-container");
+
+        questionContainer.innerHTML = `    
+            <p><strong>${question.question}</strong></p>
+            ${question.options.map((option, index) => 
+                `<div class="option" onclick="checkAnswer('${String.fromCharCode(97 + index)}')">${option}</div>`
+            ).join('')}
+        `;
+    }
+
+    function checkAnswer(selectedAnswer) {
+        const question = questions[currentQuestionIndex];
+
+        if (selectedAnswer === question.correctAnswer) {
+            score++;
+        }
+
+        currentQuestionIndex++;
+        showQuestion();
+    }
+
+    function restartQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        document.querySelector(".result-container").style.display = "none";
+        document.getElementById("question-container").style.display = "block";
+        showQuestion();
+    }
+
+    showQuestion();
+</script>
+<a href="index.html">PÁGINA INICIAL</a>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Conhecimentos Transversais</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-container p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background-color: #d0d0d0;
+        }
+
+        .result-container {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <div id="question-container" class="question-container">
+        <!-- Perguntas serão carregadas aqui -->
+    </div>
+    <div class="result-container" style="display:none;">
+        <p id="result-text"></p>
+        <button onclick="restartQuiz()">Iniciar novamente</button>
+    </div>
+</div>
+
+<script>
+    const questions = [
+    {
+        "question": "1. As ações afirmativas:",
+        "options": [
+            "A) têm caráter temporário.",
+            "B) baseiam-se no princípio da igualdade formal previsto na Constituição Federal.",
+            "C) devem ser aplicadas, simultaneamente, em relação a todos os grupos sociais vulneráveis, sob pena de violar a isonomia existente entre eles.",
+            "D) são baseadas em critérios estritos de meritocracia.",
+            "E) dependem sempre de autorização legal para não configurarem discriminação negativa."
+        ],
+        "correctAnswer": 0
+    },
+    {
+        "question": "2. As ações afirmativas podem ser definidas como políticas públicas (e privadas) voltadas à concretização do princípio constitucional da igualdade material e à neutralização dos efeitos da discriminação racial, de gênero, de idade, de origem nacional e de compleição física. São exemplos de medidas que se constituem em ações afirmativas na educação:",
+        "options": [
+            "A) políticas de valorização identitária e adoção de cotas de ingresso no ensino superior.",
+            "B) adoção de cotas raciais, institucionalização de conteúdos antirracistas e antidiscriminatórios no currículo escolar.",
+            "C) combate à lgbtfobia na escola e adoção da educação “anti-racista e antidiscriminatoria”.",
+            "D) combate à lgbtfobia na escola e ações de enfrentamento ao racismo.",
+            "E) ações de enfrentamento ao racismo e adoção de políticas de valorização identitária."
+        ],
+        "correctAnswer": 0
+    },
+    {
+        "question": "3. A respeito das ações afirmativas adotadas pelo setor empresarial para a realização de programas de treinamento e aperfeiçoamento profissional com oferta de vagas especificamente destinadas a grupos historicamente excluídos, assinale a opção correta:",
+        "options": [
+            "A) As iniciativas de empresas que buscam minimizar os impactos do racismo na sociedade pela adoção de ações afirmativas consistentes em processos de seleção diferenciados contemplam, ainda que de forma mediata, o princípio constitucional da função social da propriedade, que exige das empresas o devido respeito aos deveres e às responsabilidades para com a comunidade em que atuam, cujos direitos e interesses devem lealmente respeitar e atender.",
+            "B) A adoção de ações afirmativas fomenta o divisionismo, pois a mera desproporcionalidade no número de empregados negros e brancos verificada no âmbito interno de uma empresa não é justificativa suficientemente plausível e razoável para a adoção do processo de treinamento e aperfeiçoamento profissional exclusivamente voltado a pessoas negras.",
+            "C) Ações afirmativas destinadas à concretização de objetivos e valores relativos à efetivação e à materialização do princípio da igualdade no âmbito da iniciativa privada não encontram amparo legal no ordenamento jurídico brasileiro e, por isso, não têm o condão de eliminar desigualdades sociais e étnicas decorrentes de fatores históricos, sociais, econômicos, entre outros, pois cabe ao poder público adotar políticas públicas de enfrentamento a essas desigualdades.",
+            "D) Ações afirmativas para pessoas negras no mercado de trabalho promovem racismo reverso, ou seja, discriminação contra pessoas brancas, por isso o mais adequado seria promover um processo de seleção sem possibilidade de identificação da cor/raça dos candidatos.",
+            "E) A falta de capacitação é o principal problema da população negra, o que acaba se refletindo na desigualdade na ocupação de postos nas empresas; portanto, em vez de fomentar o divisionismo com ações afirmativas, convém promover ações neutras, com oferta de qualificação profissional, para o enfrentamento do cenário de ausência de pessoas pretas e pardas nos postos de comando nas esferas pública e privada."
+        ],
+        "correctAnswer": 0
+    },
+    {
+        "question": "4. Na doutrina do direito antidiscriminatório, estereótipos são:",
+        "options": [
+            "A) opiniões pessoais baseadas em crenças que expressam falsas generalizações sobre membros de grupos sociais, para além de opiniões negativas em relação a certa classe de indivíduos.",
+            "B) avaliações sobre os membros de um segmento social baseadas em generalizações depreciativas que não podem ser estendidas a todos por conta da variedade existente entre os seres humanos.",
+            "C) atitudes e emoções que implicam direta ou indiretamente uma postura de caráter negativo ou uma antipatia em relação a integrantes de determinados grupos.",
+            "D) atitudes irracionais em relação a grupos de pessoas que não encontram base adequada porque expressam conhecimento falso da realidade.",
+            "E) afastamento da norma moral de reconhecimento da humanidade de todas as pessoas, como fundamento das interações humanas em uma sociedade democrática."
+        ],
+        "correctAnswer": 0
+    },
+    {
+        "question": "5. Considere um caso em que a União patrocina financeiramente uma política de apoio a certa região do Brasil que está assolada por uma seca crônica. A política adotada consiste em liberar o acesso das vítimas a um açude numa região vizinha para levarem água gratuitamente. A política se destina a todas as vítimas da seca naquela região. O argumento central é de que tal política seria discriminatória. Em relação a tal caso, é correto afirmar que:",
+        "options": [
+            "A) não existe discriminação, uma vez que a política é neutra porque trata todas as vítimas da seca de maneira igualitária, sem impor ônus a nenhum grupo específico;",
+            "B) a existência ou não de discriminação numa política pública é uma avaliação de natureza apenas moral e não há base legal que permita a judicialização desse caso;",
+            "C) trata-se de um caso de discriminação direta, já que produziu distinção que teve como efeito restringir o exercício, em igualdade de condições, de um grupo ao acesso à água;",
+            "D) é um caso de discriminação indireta, pois, apesar de ser uma política neutra, ela acarreta uma desvantagem particular às pessoas que não possuem recursos para transportar a água;",
+            "E) a situação caracteriza-se como discriminação múltipla ou agravada, uma vez que acumula tanto a discriminação direta quanto a discriminação indireta."
+        ],
+        "correctAnswer": 3
+    },
+    {
+        "question": "6. A respeito do Direito Antidiscriminatório, assinale a alternativa correta:",
+        "options": [
+            "A) A teoria da discriminação interseccional tem origem nas críticas recebidas por líderes de movimentos minoritários que deduzem que tais grupos são homogêneos e que seus integrantes sofrem com a opressão da mesma forma.",
+            "B) Pode-se afirmar que o Direito Antidiscriminatório é um subsistema do Direito Administrativo, encontrando fundamento no princípio da legalidade.",
+            "C) A discriminação não pressupõe uma relação de hierarquia entre indivíduos e pode ocorrer entre sujeitos pertencentes a um mesmo grupo.",
+            "D) São três os fundamentos jurídicos do Direito Antidiscriminatório: a objetividade jurídica, a racionalidade constitucional e a universalidade de direitos.",
+            "E) A discriminação indireta se dá quando uma norma tem um impacto desproporcionalmente negativo sobre um dado grupo vulnerável, podendo tal norma ser neutra, no sentido da instituição responsável não ter a intenção de prejudicar o grupo atingido."
+        ],
+        "correctAnswer": 4
+    },
+    {
+        "question": "7. A Constituição Federal de 1988, por possuir expressivo conjunto de normas diretamente relacionado aos direitos sociais, preserva os direitos fundamentais das minorias, como, por exemplo, o direito a terra dos povos indígenas e das comunidades quilombolas. Isso é correto?",
+        "options": [
+            "A) Sim",
+            "B) Não"
+        ],
+        "correctAnswer": 0
+    },
+    {
+        "question": "8. Medidas que visem garantir a certo grupo de minorias a superação de barreiras resultantes de desigualdade histórica e impeditivas ao exercício pleno de direitos e garantias fundamentais não devem ser consideradas discriminatórias, pois representam compromisso com a promoção de valores universais concernentes à paz e à igualdade entre diferentes povos, raças e nações. Isso está de acordo com qual dispositivo?",
+        "options": [
+            "A) Lei n.° 12.288/2010",
+            "B) Lei n.° 10.639/2003",
+            "C) Convenção Internacional sobre Eliminação de Todas as Formas de Discriminação Racial",
+            "D) Todas as alternativas estão corretas",
+            "E) Nenhuma das alternativas está correta"
+        ],
+        "correctAnswer": 3
+    },
+    {
+        "question": "9. Uma vez estabelecidos, os Direitos Humanos não podem ser retirados do ordenamento, em razão do princípio da:",
+        "options": [
+            "A) Inter-relacionaridade",
+            "B) Indisponibilidade",
+            "C) Inerência",
+            "D) Vedação do retrocesso",
+            "E) Inesgotabilidade"
+        ],
+        "correctAnswer": 3
+    },
+    {
+        "question": "10. Acerca do dever de respeitar e garantir, assinale a opção correta. Nesse sentido, considere que a sigla CIDH, sempre que empregada, se refere à Corte Interamericana de Direitos Humanos:",
+        "options": [
+            "A) Tal dever é materializado a partir de medidas positivas gerais, compreendido como um direito adicional e complementar, e de medidas positivas especiais, dirigidas à população em geral, decorrentes da obrigação de assegurar vigência às normas internacionais de proteção aos direitos humanos no âmbito interno pelo Estado.",
+            "B) No Caso Família Barrios versus Venezuela, a falta de diligências adequadas para prevenir uma violação por particulares não pode configurar a responsabilidade do Estado.",
+            "C) A CIDH considera como núcleos do dever de investigar, processar e punir, exclusivamente, o direito à vida das vítimas e a proteção judicial.",
+            "D) O dever de proteção e garantia não encontra previsão nos tratados do sistema onusiano, especialmente nos Protocolos Internacionais de Direitos Civis e Políticos e Econômicos, Sociais e Culturais, razão pela qual é reconhecido como uma criação da CIDH.",
+            "E) O dever de investigar, processar e punir deriva do dever de respeitar e garantir, conforme jurisprudência da CIDH desde o Caso Velásquez Rodriguez versus Honduras."
+        ],
+        "correctAnswer": 4
+    },
+    {
+        "question": "11. A Constituição Federal de 1988 é primordialmente um instrumento de garantia do indivíduo diante do enorme poder coercitivo estatal, de modo que contrariam a Constituição normas que contenham mandados de criminalização ou que proíbam a proteção penal insuficiente, uma vez que tais dispositivos operariam no sentido do fortalecimento do poder punitivo estatal, o que é incompatível com as finalidades da Constituição. Esse item está correto?",
+        "options": [
+            "A) Sim",
+            "B) Não"
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "12. Sobre os Programas de Integridade (compliance), assinale a alternativa correta:",
+        "options": [
+            "A) A OCDE formulou um guia para empresas multinacionais, com a finalidade de promover um padrão empresarial responsável a nível global, e uma das recomendações feitas é a adoção da devida diligência com base no risco (risk-based diligence).",
+            "B) A definição das medidas de prevenção, detecção e comunicação é o primeiro passo na formulação de um programa de compliance que tenha por objetivo a prevenção à lavagem de dinheiro.",
+            "C) A efetividade de um programa de compliance deve ser realizado por meio de um teste de idoneidade, que se limita a avaliar em abstrato a implementação do programa.",
+            "D) A implementação de processos internos de denúncia de irregularidades nas empresas privadas teve origem na Inglaterra, onde são denominados de whistleblowers.",
+            "E) A implementação do programa de compliance se dá com o estabelecimento de um processo para averiguação dos descumprimentos ao programa, assim como a instituição de um plano de avaliação continuada."
+        ],
+        "correctAnswer": 0
+    },
+    {
+        "question": "13. A jurisprudência da Corte Interamericana de Direitos Humanos reconhece a responsabilidade do Estado por violações de direitos humanos não apenas como resultado de uma ação ou omissão a ele diretamente imputável, mas também em virtude da falta de devida diligência do Estado em prevenir uma violação cometida por particulares. Esse item está correto?",
+        "options": [
+            "C) Certo",
+            "E) Errado"
+        ],
+        "correctAnswer": 0
+    },
+    {
+        "question": "14. Na presença de cenário de risco substancial à integridade, as entidades, públicas ou privadas, devem adotar verificações prévias, conhecidas como due diligence, ou seja, efetuar exame prévio à contratação, além de medidas para a supervisão de terceiros contratados. Esse item está correto?",
+        "options": [
+            "C) Certo",
+            "E) Errado"
+        ],
+        "correctAnswer": 0
+    },
+    {
+        "question": "15. Sobre a interseccionalidade e a perspectiva do feminismo interseccional, importante tema que permeia o trabalho do(a) assistente social com as diferentes expressões da questão social, analise as assertivas abaixo: I – O feminismo interseccional é uma abordagem teórica que tem sido utilizada por muitas teóricas negras feministas. II – O cruzamento entre raça e gênero, tal qual formulado pela abordagem interseccional, ainda é periférico na produção do Serviço Social. III – A perspectiva do feminismo interseccional permite a ampliação do olhar sobre específicas opressões vivenciadas pelas mulheres, cujas identidades e experiências sociais são marcadas por exclusivos marcadores sociais de gênero e raça/etnia. IV – A proposta do feminismo interseccional possibilita uma análise dos marcadores sociais de gênero e de raça/etnia através do seu entrecruzamento, não sendo vistos de forma isolada, ou através de uma visão somatória ou aditiva de opressões. Quais estão corretas?",
+        "options": [
+            "A) Apenas I e II.",
+            "B) Apenas II e IV.",
+            "C) Apenas II e III.",
+            "D) Apenas I, II e III.",
+            "E) Apenas I, II e IV"
+        ],
+        "correctAnswer": 4
+    }
+
+];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function showQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            document.getElementById("question-container").style.display = "none";
+            document.querySelector(".result-container").style.display = "block";
+            document.getElementById("result-text").innerHTML = `Você acertou ${score} de ${questions.length} perguntas.`;
+            return;
+        }
+
+        const question = questions[currentQuestionIndex];
+        const questionContainer = document.getElementById("question-container");
+
+        questionContainer.innerHTML = `
+            <p><strong>${question.question}</strong></p>
+            ${question.options.map((option, index) => 
+                `<div class="option" onclick="checkAnswer(${index})">${option}</div>`
+            ).join('')}
+        `;
+    }
+
+    function checkAnswer(selectedIndex) {
+        const question = questions[currentQuestionIndex];
+
+        if (selectedIndex === question.correctAnswer) {
+            score++;
+        }
+
+        currentQuestionIndex++;
+        showQuestion();
+    }
+
+    function restartQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        document.querySelector(".result-container").style.display = "none";
+        document.getElementById("question-container").style.display = "block";
+        showQuestion();
+    }
+
+    showQuestion();
+</script>
+
+    <a href="index.html">PAGINA INICIAL</a>
+</body>
+</html>

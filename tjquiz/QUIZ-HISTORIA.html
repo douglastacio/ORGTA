@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Rondônia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="quiz-container">
+    <div id="question-container" class="question-container">
+        <!-- Perguntas serão carregadas aqui -->
+    </div>
+    <div class="result-container" style="display:none;">
+        <p id="result-text"></p>
+        <button onclick="restartQuiz()">Iniciar novamente</button>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        {
+            question: "1. Quem foi o responsável pela fundação de Porto Velho?",
+            options: ["Marechal Rondon", "João da Silva", "James K. Polk", "Rui Barbosa"],
+            correctAnswer: 0
+        },
+        {
+            question: "2. Em que ano foi fundada a cidade de Porto Velho?",
+            options: ["1902", "1914", "1910", "1920"],
+            correctAnswer: 1
+        },
+        {
+            question: "3. Qual é o principal rio que atravessa o estado de Rondônia?",
+            options: ["Rio Amazonas", "Rio Guaporé", "Rio Madeira", "Rio Paraná"],
+            correctAnswer: 2
+        },
+        {
+            question: "4. Rondônia foi parte de qual estado antes de se tornar independente?",
+            options: ["Amazonas", "Pará", "Mato Grosso", "Acre"],
+            correctAnswer: 2
+        },
+        {
+            question: "5. Quem foi o Marechal que dá nome ao estado de Rondônia?",
+            options: ["Marechal Cândido Rondon", "Marechal Humberto de Alencar", "Marechal Luís Alves", "Marechal Eduardo Gomes"],
+            correctAnswer: 0
+        },
+        {
+            question: "6. O que foi a 'Ferrovia Madeira-Mamoré'?",
+            options: ["Uma estrada de ferro para escoamento de grãos", "Uma linha ferroviária construída para a exploração de ouro", "Uma ferrovia para transporte de madeira e borracha", "Uma ferrovia para conectar Porto Velho a Manaus"],
+            correctAnswer: 2
+        },
+        {
+            question: "7. Qual foi o principal ciclo econômico de Rondônia durante o século XX?",
+            options: ["Ciclo da Cana-de-Açúcar", "Ciclo do Ouro", "Ciclo da Borracha", "Ciclo do Café"],
+            correctAnswer: 2
+        },
+        {
+            question: "8. Quando Rondônia se tornou um estado?",
+            options: ["1960", "1980", "1978", "1982"],
+            correctAnswer: 3
+        },
+        {
+            question: "9. O que atraiu os primeiros colonos para Rondônia?",
+            options: ["A pesca", "A agricultura", "A exploração de ouro", "O cultivo de arroz"],
+            correctAnswer: 2
+        },
+        {
+            question: "10. A presença de que tipo de atividade econômica teve grande influência no povoamento de Rondônia no século XIX?",
+            options: ["Pecuária", "Mineração", "Agricultura", "Comércio"],
+            correctAnswer: 1
+        },
+        {
+            question: "11. Qual é a capital do estado de Rondônia?",
+            options: ["Porto Velho", "Ji-Paraná", "Cacoal", "Vilhena"],
+            correctAnswer: 0
+        },
+        {
+            question: "12. Qual é o maior rio de Rondônia?",
+            options: ["Rio Negro", "Rio Madeira", "Rio Solimões", "Rio Guaporé"],
+            correctAnswer: 1
+        },
+        {
+            question: "13. Rondônia faz fronteira com quais estados?",
+            options: ["Acre, Amazonas e Mato Grosso", "Amazonas, Mato Grosso e Pará", "Acre, Amazonas e Goiás", "Mato Grosso, Pará e Goiás"],
+            correctAnswer: 0
+        },
+        {
+            question: "14. Qual é a principal atividade econômica do estado de Rondônia?",
+            options: ["Turismo", "Agricultura", "Pecuária", "Indústria"],
+            correctAnswer: 1
+        },
+        {
+            question: "15. O que caracteriza a vegetação predominante de Rondônia?",
+            options: ["Caatinga", "Cerrado", "Floresta Amazônica", "Pampa"],
+            correctAnswer: 2
+        },
+        {
+            question: "16. Qual é o clima predominante em Rondônia?",
+            options: ["Clima tropical", "Clima subtropical", "Clima equatorial", "Clima semiárido"],
+            correctAnswer: 0
+        },
+        {
+            question: "17. Rondônia está localizado em qual região do Brasil?",
+            options: ["Norte", "Nordeste", "Centro-Oeste", "Sudeste"],
+            correctAnswer: 0
+        },
+        {
+            question: "18. Qual é o maior município de Rondônia em termos de população?",
+            options: ["Ji-Paraná", "Cacoal", "Porto Velho", "Vilhena"],
+            correctAnswer: 2
+        },
+        {
+            question: "19. Rondônia é um estado com grande presença de que tipo de relevo?",
+            options: ["Planalto", "Planície", "Montanhoso", "Depressão"],
+            correctAnswer: 0
+        },
+        {
+            question: "20. Rondônia possui áreas de que tipo de bioma?",
+            options: ["Cerrado e Caatinga", "Pampa e Pantanal", "Floresta Amazônica", "Mata Atlântica"],
+            correctAnswer: 2
+        },
+        {
+            question: "21. Em que período histórico a região de Rondônia foi fortemente marcada pela busca de ouro?",
+            options: ["No período colonial", "Durante a República Velha", "No ciclo da borracha", "Durante a Revolução Industrial"],
+            correctAnswer: 1
+        },
+        {
+            question: "22. Qual foi o principal fator que impulsionou a construção da Estrada de Ferro Madeira-Mamoré?",
+            options: ["Necessidade de transporte de borracha", "Exploração do ouro", "Transporte de madeira", "Expansão da fronteira agrícola"],
+            correctAnswer: 2
+        },
+        {
+            question: "23. Qual foi o papel das Missões Jesuíticas em Rondônia?",
+            options: ["Colonizar a região e explorar ouro", "Proteger os indígenas e organizar a agricultura", "Exportar produtos como borracha e café", "Ajudar no processo de fundação da cidade de Porto Velho"],
+            correctAnswer: 1
+        },
+        {
+            question: "24. O ciclo da borracha em Rondônia teve início no:",
+            options: ["Final do século XVIII", "Início do século XIX", "Início do século XX", "Meio do século XIX"],
+            correctAnswer: 2
+        },
+        {
+            question: "25. Qual atividade foi responsável pela aceleração da ocupação e povoamento de Rondônia no século XIX?",
+            options: ["Pecuária", "Mineração de ouro", "Agricultura de café", "Exploração de madeira"],
+            correctAnswer: 1
+        },
+        {
+            question: "26. Qual foi a primeira cidade do estado de Rondônia a ser fundada?",
+            options: ["Porto Velho", "Cacoal", "Ji-Paraná", "Vilhena"],
+            correctAnswer: 0
+        },
+        {
+            question: "27. Em que contexto histórico a cidade de Porto Velho foi fundada?",
+            options: ["No auge do ciclo da borracha", "Durante a construção da estrada de ferro Madeira-Mamoré", "No período da colonização portuguesa", "Durante a mineração do ouro"],
+            correctAnswer: 1
+        },
+        {
+            question: "28. Quem foi o responsável por abrir a estrada de ferro Madeira-Mamoré?",
+            options: ["Marechal Cândido Rondon", "Barão do Rio Branco", "James W. Rhea", "Rui Barbosa"],
+            correctAnswer: 2
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function showQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            document.getElementById("question-container").style.display = "none";
+            document.querySelector(".result-container").style.display = "block";
+            document.getElementById("result-text").innerHTML = `Você acertou ${score} de ${questions.length} perguntas.`;
+            return;
+        }
+
+        const question = questions[currentQuestionIndex];
+        const questionContainer = document.getElementById("question-container");
+
+        questionContainer.innerHTML = `
+            <p><strong>${question.question}</strong></p>
+            ${question.options.map((option, index) => 
+                `<div class="option" onclick="checkAnswer(${index})">${option}</div>`
+            ).join('')}
+        `;
+    }
+
+    function checkAnswer(selectedIndex) {
+        const question = questions[currentQuestionIndex];
+
+        if (selectedIndex === question.correctAnswer) {
+            score++;
+        }
+
+        currentQuestionIndex++;
+        showQuestion();
+    }
+
+    function restartQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        document.querySelector(".result-container").style.display = "none";
+        document.getElementById("question-container").style.display = "block";
+        showQuestion();
+    }
+
+    showQuestion();
+</script>
+<a href="index.html">PAGINA INICIAL</a>
+</body>
+</html>

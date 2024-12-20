@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Organização</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Douglas Tácio</h2>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="#" onclick="showDashboard('home')">Página Inicial</a></li>
+                <li><a href="#" onclick="showDashboard('financeiro')">Financeiro</a></li>
+                <li><a href="#" onclick="showDashboard('academia')">Academia</a></li>
+                <li><a href="#" onclick="showDashboard('estudos')">Estudos</a></li>
+                <li><a href="#" onclick="showDashboard('projetos')">Projetos</a></li>
+                <li><a href="#" onclick="showDashboard('negocios')">Negócios</a></li>
+                <li><a href="#" onclick="showDashboard('planner')">Planejamentos</a></li>
+                <li><a href="#" onclick="showDashboard('notificacoes')">Monitor de Habitos</a></li>
+                <li><a href="#" onclick="showDashboard('configuracoes')">Configurações</a></li>
+                <li><a href="#" onclick="showDashboard('ajuda')">Ajuda</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+
+    <section class="todo-list">
+        <h2>Minhas Anotações</h2>
+        <form id="todo-form">
+            <input type="text" id="todo-input" placeholder="Digite uma tarefa..." required />
+            <button type="submit">Adicionar</button>
+        </form>
+        <ul id="todo-items">
+            <!-- As tarefas serão renderizadas dinamicamente -->
+        </ul>
+    </section>
+    
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <header>
+            <h1>Bem-vindo ao Painel</h1>
+            <p>Este é o conteúdo principal do projeto.</p>
+        </header>
+
+        <!-- Aba de Estudos -->
+        <section id="estudos-section">
+            <div class="card">
+                <h3>📚 Aba de Estudos</h3>
+
+                <!-- Progresso Geral -->
+                <div class="progress-card">
+                    <h4>Progresso Geral</h4>
+                    <p>50% Concluído</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 50%;">100%</div>
+                    </div>
+                </div>
+
+                <!-- Curso Atual -->
+                <div class="course-card">
+                    <h4>Curso Atual</h4>
+                    <p>JavaScript Avançado</p>
+                    <p>Concluído: 3/6 Módulos</p>
+                </div>
+
+                <!-- Tarefas de Estudos -->
+                <div class="tasks-card">
+                    <h4>Tarefas de Estudos</h4>
+                    <ul class="task-list">
+                        <li><input type="checkbox" checked> Assistir aula 4 - Funções em JS</li>
+                        <li><input type="checkbox" checked> Revisar exercícios do módulo 3</li>
+                        <li><input type="checkbox" checked> Fazer resumo do curso de HTML</li>
+                    </ul>
+                </div>
+
+                <!-- Materiais Complementares -->
+                <div class="materials-card">
+                    <h4>Concursos</h4>
+                    <ul class="material-list">
+                        <li><a href="estudos/index.html">📄 Tribunal de Justiça - Tecnico Judiciario</a></li>
+                        <li><a href="#">🎥 Camara Muncipal de Porto Velho</a></li>
+                        <li><a href="#">🌐 Tribunal de Justiça - Analista Judiciario</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard dinâmica -->
+        <section class="dashboard" id="dashboard">
+            <!-- Os cards serão preenchidos dinamicamente -->
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

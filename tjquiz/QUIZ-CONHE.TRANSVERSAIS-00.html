@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Conhecimentos Transversais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="quiz-container">
+    <div id="question-container" class="question-container">
+        <!-- Perguntas serão carregadas aqui -->
+    </div>
+    <div class="result-container" style="display:none;">
+        <p id="result-text"></p>
+        <button onclick="restartQuiz()">Iniciar novamente</button>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        {
+            "question": "1. O que surgiu com a Revolução Francesa em 1789 e com a Constituição dos EUA em 1776?",
+            "options": ["A) A igualdade material", "B) A igualdade formal", "C) A desigualdade racial", "D) A discriminação"],
+            "correctAnswer": 1
+        },
+        {
+            "question": "2. O que significa a igualdade formal?",
+            "options": ["A) Considerar as diferenças entre as pessoas", "B) Tratar todas as pessoas de maneira igual na lei", "C) Proteger grupos vulneráveis", "D) Garantir que todos tenham os mesmos direitos materiais"],
+            "correctAnswer": 1
+        },
+        {
+            "question": "3. Por que a igualdade formal não era suficiente, segundo o texto?",
+            "options": ["A) Porque ignorava as diferenças e particularidades das pessoas", "B) Porque todos eram desiguais perante a lei", "C) Porque não considerava os direitos humanos", "D) Porque as mulheres não tinham direitos"],
+            "correctAnswer": 0
+        },
+        {
+            "question": "4. O que é a igualdade material?",
+            "options": ["A) Considerar as pessoas apenas por sua classe social", "B) Ignorar as diferenças entre as pessoas", "C) Garantir a igualdade de forma concreta, considerando as diferenças", "D) Afirmar que todos são iguais sem exceção"],
+            "correctAnswer": 2
+        },
+        {
+            "question": "5. Quais grupos de pessoas são protegidos por normas jurídicas específicas?",
+            "options": ["A) Apenas os homens", "B) Mulheres, crianças, idosos e vítimas de discriminação racial", "C) Apenas os idosos", "D) Apenas as pessoas de classes altas"],
+            "correctAnswer": 1
+        },
+        {
+            "question": "6. O que significa a igualdade sob a perspectiva da não discriminação?",
+            "options": ["A) Garantir a diversidade e evitar discriminação", "B) Excluir grupos vulneráveis", "C) Considerar todos como iguais, sem diferenciação", "D) Garantir igualdade material para todos os cidadãos"],
+            "correctAnswer": 0
+        },
+        {
+            "question": "7. O que a igualdade sob a perspectiva da inclusão busca?",
+            "options": ["A) Excluir as pessoas vulneráveis", "B) Integrar os grupos de forma justa e igualitária", "C) Aumentar as desigualdades", "D) Promover a discriminação"],
+            "correctAnswer": 1
+        },
+        {
+            "question": "8. O que significa a abrangência subjetiva das normas jurídicas de igualdade?",
+            "options": ["A) Significa que uma pessoa ou grupo tem o direito de ser protegido contra discriminação", "B) Significa que as pessoas devem ser desiguais", "C) Significa que não é necessário proteger ninguém", "D) Significa que todos devem ser tratados de maneira igual"],
+            "correctAnswer": 0
+        },
+        {
+            "question": "9. Qual é o objetivo da antidiscriminação?",
+            "options": ["A) Discriminar grupos historicamente injustiçados", "B) Afastar toda e qualquer diferenciação injusta", "C) Garantir mais direitos para as classes altas", "D) Excluir as mulheres do mercado de trabalho"],
+            "correctAnswer": 1
+        },
+        {
+            "question": "10. Historicamente, a igualdade foi compreendida como um dever de:",
+            "options": ["A) Promover a discriminação", "B) Não discriminar", "C) Aumentar as desigualdades", "D) Impor uma classe superior"],
+            "correctAnswer": 1
+        },
+        {
+            "question": "11. O que diferencia o direito antidiscriminatório do direito das minorias?",
+            "options": ["A) O direito das minorias tem viés universalista, enquanto o antidiscriminatório é particularista", "B) O direito antidiscriminatório protege grupos específicos, enquanto o das minorias é universalista", "C) O direito antidiscriminatório é universalista, enquanto o das minorias é particularista", "D) Ambos possuem as mesmas finalidades e abordagens"],
+            "correctAnswer": 2
+        },
+        {
+            "question": "12. Qual é a principal característica do direito das minorias?",
+            "options": ["A) Aplicação de medidas repressivas contra a discriminação", "B) Promoção de políticas públicas para grupos vulneráveis", "C) Universalidade dos direitos humanos", "D) Proibição genérica da discriminação"],
+            "correctAnswer": 1
+        },
+        {
+            "question": "13. Qual dos conceitos abaixo é descrito como uma atitude negativa dirigida a um grupo, ignorando as diferenças individuais?",
+            "options": ["A) Preconceito", "B) Estereótipo", "C) Discriminação", "D) Direitos universais"],
+            "correctAnswer": 0
+        },
+        {
+            "question": "14. O que caracteriza um estereótipo?",
+            "options": ["A) Uma visão individualista e detalhada sobre cada pessoa", "B) Uma generalização sobre um grupo com base em características de seus membros", "C) Uma ação negativa contra um grupo específico", "D) Uma política pública para promover igualdade"],
+            "correctAnswer": 1
+        },
+        {
+        "question": "15. O que caracteriza o conceito de preconceito no direito antidiscriminatório?",
+        "options": [
+            "A) Uma atitude positiva dirigida a um grupo com base em diferenças individuais.",
+            "B) Uma atitude negativa contra o grupo como um todo, ignorando diferenças individuais.",
+            "C) Uma generalização neutra sobre características de um grupo.",
+            "D) Uma ação negativa voltada a um membro específico de um grupo."
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "16. Qual das opções descreve corretamente o conceito de estereótipo?",
+        "options": [
+            "A) Uma ação negativa contra um membro de um grupo vulnerável.",
+            "B) Uma atitude baseada em diferenças individuais de um grupo.",
+            "C) Uma generalização sobre um grupo que pode ser positiva ou negativa.",
+            "D) Uma norma neutra que gera discriminação indireta."
+        ],
+        "correctAnswer": 2
+    },
+    {
+        "question": "17. Qual dos exemplos abaixo é um estereótipo positivo mencionado no texto?",
+        "options": [
+            "A) A crença de que negros são menos inteligentes.",
+            "B) A ideia de que mulheres são melhores em multitarefa.",
+            "C) A visão de que asiáticos são mais inteligentes.",
+            "D) A opinião de que jovens são irresponsáveis."
+        ],
+        "correctAnswer": 2
+    },
+    {
+        "question": "18. Como é definida a discriminação no direito antidiscriminatório?",
+        "options": [
+            "A) Uma atitude neutra dirigida a um grupo.",
+            "B) Uma generalização sobre as características de um grupo.",
+            "C) Uma ação positiva para beneficiar um grupo vulnerável.",
+            "D) Uma ação negativa dirigida ao membro de um grupo por sua pertinência ao grupo."
+        ],
+        "correctAnswer": 3
+    },
+    {
+        "question": "19. O que significa subjetividade jurídica no contexto do direito antidiscriminatório?",
+        "options": [
+            "A) Que a discriminação é baseada em uma visão subjetiva do discriminador.",
+            "B) Que todas as normas jurídicas são neutras.",
+            "C) Que o direito não combate visões subjetivas.",
+            "D) Que as leis antidiscriminatórias se aplicam apenas a casos específicos."
+        ],
+        "correctAnswer": 0
+    },
+    {
+        "question": "20. O que é racionalidade constitucional no direito antidiscriminatório?",
+        "options": [
+            "A) A proteção de valores constitucionais para proibir a discriminação.",
+            "B) A subjetividade do discriminador refletida nas normas jurídicas.",
+            "C) A aplicação universal de normas sem distinções.",
+            "D) A criação de normas técnicas neutras para evitar discriminação."
+        ],
+        "correctAnswer": 0
+    },
+    {
+        "question": "21. O que diz o princípio da universalidade de direitos?",
+        "options": [
+            "A) Apenas grupos vulneráveis têm os mesmos direitos.",
+            "B) Todos os seres humanos possuem os mesmos direitos, independentemente de qualquer característica.",
+            "C) As normas técnicas neutras são aplicadas de forma desigual.",
+            "D) As diferenças individuais devem ser ignoradas no direito."
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "22. O que caracteriza a discriminação indireta?",
+        "options": [
+            "A) Uma ação negativa contra um membro de um grupo vulnerável.",
+            "B) Uma norma tecnicamente neutra que causa impacto desproporcional sobre um grupo vulnerável.",
+            "C) A generalização positiva sobre um grupo com base em suas características.",
+            "D) A aplicação de leis iguais para todos sem exceções."
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "23. Qual dos exemplos abaixo poderia ilustrar discriminação indireta?",
+        "options": [
+            "A) Exigir comprovação de renda alta para acessar serviços públicos.",
+            "B) Dizer que todas as pessoas de uma etnia são menos inteligentes.",
+            "C) Realizar ações negativas contra um grupo específico.",
+            "D) Beneficiar grupos vulneráveis por meio de cotas raciais."
+        ],
+        "correctAnswer": 0
+    },
+    {
+        "question": "24. Qual é a relação entre normas neutras e o direito antidiscriminatório?",
+        "options": [
+            "A) Normas neutras sempre promovem igualdade.",
+            "B) Normas neutras podem causar discriminação indireta ao prejudicar grupos vulneráveis.",
+            "C) O direito antidiscriminatório rejeita a aplicação de normas neutras.",
+            "D) Normas neutras não têm impacto sobre grupos vulneráveis."
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "25. De acordo com o art. 1º, VI, do Estatuto da Igualdade Racial (Lei n. 12.288/2010), o que são ações afirmativas?",
+        "options": [
+            "A) Programas de inclusão universal sem foco em grupos específicos.",
+            "B) Medidas adotadas para promover a igualdade de oportunidades e corrigir desigualdades raciais.",
+            "C) Políticas públicas que apenas visam a igualdade formal.",
+            "D) Medidas educativas sem foco em grupos vulneráveis.",
+            "E) Programas de inclusão voltados apenas para a população negra."
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "26. O que caracteriza as ações afirmativas, também conhecidas como discriminações positivas?",
+        "options": [
+            "A) São medidas neutras que não beneficiam nenhum grupo específico.",
+            "B) Beneficiam um grupo social específico como forma de combater outra discriminação negativa e excludente.",
+            "C) São ações apenas para a população de alta renda.",
+            "D) Buscam a igualdade formal sem a necessidade de medidas específicas.",
+            "E) Visam promover a discriminação entre os grupos sociais."
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "27. O Supremo Tribunal Federal, no julgamento da ADC 41, concluiu que as ações afirmativas são:",
+        "options": [
+            "A) Inconstitucionais, pois violam o princípio da isonomia.",
+            "B) Constitucionalmente válidas, pois visam superar as discriminações estruturais e promover a igualdade material.",
+            "C) Apenas válidas para a educação, não se aplicando a outros setores.",
+            "D) Ilegais, por promoverem discriminação entre os cidadãos.",
+            "E) Necessárias apenas para os grupos raciais, sem incluir outros grupos vulneráveis."
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "28. O que a teoria da discriminação interseccional defende?",
+        "options": [
+            "A) A discriminação ocorre de forma homogênea dentro dos grupos vulneráveis.",
+            "B) Pessoas de grupos vulneráveis não podem ser mais discriminadas do que outras.",
+            "C) A discriminação não é homogênea e pode afetar de forma mais intensa algumas pessoas dentro dos grupos vulneráveis.",
+            "D) Todos os membros dos grupos vulneráveis enfrentam os mesmos tipos de discriminação.",
+            "E) A discriminação interseccional é uma teoria desatualizada que não se aplica mais."
+        ],
+        "correctAnswer": 2
+    },
+    {
+        "question": "29. De acordo com o texto, as políticas públicas ou ações afirmativas de inclusão são:",
+        "options": [
+            "A) Permanentes e visam garantir igualdade permanente entre os grupos sociais.",
+            "B) Medidas temporárias, com duração limitada, que visam combater desigualdades.",
+            "C) Exclusivas para grupos vulneráveis econômicos, não sendo aplicáveis a questões raciais.",
+            "D) Definidas exclusivamente por órgãos privados sem o envolvimento do governo.",
+            "E) Somente aplicadas em casos de discriminação direta e explícita."
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "30. O que estabelece a Lei federal de cotas (Lei n. 12.711/2012) e suas alterações pela Lei n. 14.723/2023?",
+        "options": [
+            "A) Ações afirmativas exclusivamente para a população indígena.",
+            "B) A implementação de cotas apenas para universidades públicas sem considerar outros fatores.",
+            "C) A adoção de cotas e políticas públicas de inclusão temporárias, focadas em grupos vulneráveis.",
+            "D) A exclusão de cotas para grupos raciais e sociais em todas as esferas educacionais.",
+            "E) A promoção de cotas permanentes em todas as áreas do governo."
+        ],
+        "correctAnswer": 2
+    }
+
+
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function showQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            document.getElementById("question-container").style.display = "none";
+            document.querySelector(".result-container").style.display = "block";
+            document.getElementById("result-text").innerHTML = `Você acertou ${score} de ${questions.length} perguntas.`;
+            return;
+        }
+
+        const question = questions[currentQuestionIndex];
+        const questionContainer = document.getElementById("question-container");
+
+        questionContainer.innerHTML = `
+            <p><strong>${question.question}</strong></p>
+            ${question.options.map((option, index) => 
+                `<div class="option" onclick="checkAnswer(${index})">${option}</div>`
+            ).join('')}
+        `;
+    }
+
+    function checkAnswer(selectedIndex) {
+        const question = questions[currentQuestionIndex];
+
+        if (selectedIndex === question.correctAnswer) {
+            score++;
+        }
+
+        currentQuestionIndex++;
+        showQuestion();
+    }
+
+    function restartQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        document.querySelector(".result-container").style.display = "none";
+        document.getElementById("question-container").style.display = "block";
+        showQuestion();
+    }
+
+    showQuestion();
+</script>
+
+<a href="index.html">PAGINA INICIAL</a>
+</body>
+</html>

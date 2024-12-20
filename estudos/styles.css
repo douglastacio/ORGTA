@@ -1,0 +1,212 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+#contest-timer p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+section {
+    margin-top: 30px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Tabela de Matérias */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+td.high {
+    color: red;
+}
+
+td.medium {
+    color: yellow;
+}
+
+td.not-started {
+    color: gray;
+}
+
+td.in-progress {
+    color: orange;
+}
+
+button.view-notes {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button.view-notes:hover {
+    background-color: #45a049;
+}
+
+/* Calendário Semanal */
+table th, table td {
+    text-align: center;
+}
+
+/* Seção de Anotações */
+.study-notes {
+    margin-top: 20px;
+}
+
+.notes-card {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+}
+
+#add-note-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 20px 0;
+}
+
+#add-note-btn:hover {
+    background-color: #45a049;
+}
+
+.notes-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.notes-card h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.notes-card p {
+    margin: 5px 0;
+}
+
+.notes-card button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.notes-card button:hover {
+    background-color: #ff1a1a;
+}
+
+
+td[contenteditable="true"]:focus {
+    outline: 2px solid #4caf50;
+    background-color: #f0fdf4;
+}
+
+
+
+.subject-table {
+    margin: 20px;
+}
+
+.subject-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.subject-table th, .subject-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.subject-table th {
+    background-color: #f4f4f4;
+}
+
+.subject-table td[contenteditable="true"] {
+    background-color: #fff9c4;
+}
+
+#subject-form {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+#tabs {
+    margin-bottom: 10px;
+}
+
+.tab-button {
+    padding: 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+}
+
+.tab-button:hover {
+    background-color: #ddd;
+}
+
+.tab-pane {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+

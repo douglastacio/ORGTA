@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizador de Estudos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Concurso Tribunal de Justiça</h1>
+            <div id="contest-timer">
+                <p>Faltam <span id="days-left">45</span> dias para o concurso!</p>
+            </div>
+        </header>
+
+        <section class="subject-table">
+            <h2>Tabela de Matérias</h2>
+            <button id="add-subject-btn">Adicionar Matéria</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Matéria</th>
+                        <th>Professor</th>
+                        <th>Carga Horária</th>
+                        <th>Observações</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="subject-table-body">
+                    <!-- As matérias serão carregadas dinamicamente aqui -->
+                </tbody>
+            </table>
+        
+            <!-- Formulário para adicionar uma nova matéria -->
+            <form id="subject-form" style="display: none;">
+                <input type="text" id="subject-name" placeholder="Nome da Matéria" required />
+                <input type="text" id="subject-teacher" placeholder="Professor" />
+                <input type="number" id="subject-hours" placeholder="Carga Horária" />
+                <textarea id="subject-notes" placeholder="Observações"></textarea>
+                <button type="submit">Salvar Matéria</button>
+                <button type="button" id="cancel-subject-btn">Cancelar</button>
+            </form>
+        </section>
+        
+
+        <section class="matters-table">
+            <h2>Tabela de Matérias</h2>
+            <div id="tabs">
+                <button class="tab-button" onclick="openTab('portugues')">Português</button>
+                <button class="tab-button" onclick="openTab('historia')">História e Geografia de Rondônia</button>
+                <button class="tab-button" onclick="openTab('transversais')">Conhecimentos Transversais</button>
+                <button class="tab-button" onclick="openTab('direito')">Conhecimentos em Direito</button>
+            </div>
+            
+            <div id="tab-content">
+                <div class="tab-pane" id="portugues">
+                    <h2>Resumo de Português</h2>
+                    <p>Aqui está o conteúdo para estudar Português...</p>
+                </div>
+                <div class="tab-pane" id="historia" style="display:none;">
+                    <h2>Resumo de História e Geografia de Rondônia</h2>
+                    <p>Aqui está o conteúdo para estudar História...</p>
+                </div>
+                <div class="tab-pane" id="transversais" style="display:none;">
+                    <h2>Resumo de Conhecimentos Transversais</h2>
+                    <p>Aqui está o conteúdo para estudar Conhecimentos Transversais...</p>
+                </div>
+                <div class="tab-pane" id="direito" style="display:none;">
+                    <h2>Resumo de Conhecimentos em Direito</h2>
+                    <p>Aqui está o conteúdo para estudar Direito...</p>
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="weekly-schedule">
+            <h2>Calendário Semanal</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dia</th>
+                        <th>Matéria</th>
+                        <th>Tópico Principal</th>
+                        <th>Objetivo do Dia</th>
+                    </tr>
+                </thead>
+                <tbody id="weekly-schedule-body">
+                    <tr>
+                        <td>Segunda</td>
+                        <td contenteditable="true" data-day="Segunda" data-column="Matéria">Português</td>
+                        <td contenteditable="true" data-day="Segunda" data-column="Tópico">Interpretação de textos</td>
+                        <td contenteditable="true" data-day="Segunda" data-column="Objetivo">Resolver 10 questões</td>
+                    </tr>
+                    <tr>
+                        <td>Terça</td>
+                        <td contenteditable="true" data-day="Terça" data-column="Matéria">História</td>
+                        <td contenteditable="true" data-day="Terça" data-column="Tópico">Marcos históricos</td>
+                        <td contenteditable="true" data-day="Terça" data-column="Objetivo">Estudar 2 períodos</td>
+                    </tr>
+                    <tr>
+                        <td>Quarta</td>
+                        <td contenteditable="true" data-day="Quarta" data-column="Matéria">Matemática</td>
+                        <td contenteditable="true" data-day="Quarta" data-column="Tópico">Álgebra básica</td>
+                        <td contenteditable="true" data-day="Quarta" data-column="Objetivo">Resolver 5 exercícios</td>
+                    </tr>
+                    <tr>
+                        <td>Quinta</td>
+                        <td contenteditable="true" data-day="Quinta" data-column="Matéria">Ciências</td>
+                        <td contenteditable="true" data-day="Quinta" data-column="Tópico">Ciclo da água</td>
+                        <td contenteditable="true" data-day="Quinta" data-column="Objetivo">Criar resumo</td>
+                    </tr>
+                    <tr>
+                        <td>Sexta</td>
+                        <td contenteditable="true" data-day="Sexta" data-column="Matéria">Inglês</td>
+                        <td contenteditable="true" data-day="Sexta" data-column="Tópico">Verbos no passado</td>
+                        <td contenteditable="true" data-day="Sexta" data-column="Objetivo">Fazer 5 frases</td>
+                    </tr>
+                    <tr>
+                        <td>Sábado</td>
+                        <td contenteditable="true" data-day="Sábado" data-column="Matéria">Geografia</td>
+                        <td contenteditable="true" data-day="Sábado" data-column="Tópico">Mapas e escalas</td>
+                        <td contenteditable="true" data-day="Sábado" data-column="Objetivo">Resolver 3 questões</td>
+                    </tr>
+                    <tr>
+                        <td>Domingo</td>
+                        <td contenteditable="true" data-day="Domingo" data-column="Matéria">Revisão</td>
+                        <td contenteditable="true" data-day="Domingo" data-column="Tópico">Tópicos estudados</td>
+                        <td contenteditable="true" data-day="Domingo" data-column="Objetivo">Revisar tudo</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        
+
+        <section class="study-notes">
+            <h2>Anotações e Resumos</h2>
+            <div id="notes-list">
+                <!-- Resumos adicionados aparecerão aqui -->
+            </div>
+            <button id="add-note-btn">+ Adicionar Resumo</button>
+        
+            <form id="note-form" style="display: none;">
+                <h3>Adicionar Novo Resumo</h3>
+                <label for="materia">Matéria:</label>
+                <select id="materia" required>
+                    <option value="Português">Português</option>
+                    <option value="História e Geografia de Rondônia">História e Geografia de Rondônia</option>
+                    <option value="Conhecimentos Transversais">Conhecimentos Transversais</option>
+                    <option value="Conhecimentos em Direito">Conhecimentos em Direito</option>
+                </select>
+        
+                <label for="conteudo">Tópico/Conteúdo:</label>
+                <input type="text" id="conteudo" placeholder="Digite o tópico estudado" required>
+        
+                <label for="resumo">Resumo:</label>
+                <textarea id="resumo" placeholder="Descreva o que foi estudado" required></textarea>
+        
+                <label for="data">Data:</label>
+                <input type="date" id="data" required>
+        
+                <button type="submit">Salvar Resumo</button>
+            </form>
+        </section>        
+
+        <section class="study-notes">
+            <h2>Quiz</h2>
+            <div class="notes-card">
+                <h3>Quiz e provas para você exercitar</h3>
+                <p><strong>Ultima atualização:</strong> 16/12/2024</p>
+            </div>
+            <a href="../tjquiz/index.html">Acessar</a>
+        </section>
+    </div>
+    <a href="../index.html">Menu Principal</a>
+    <script src="script.js"></script>
+</body>
+</html>

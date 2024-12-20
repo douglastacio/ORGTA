@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Conhecimentos Transversais</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-container p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background-color: #d0d0d0;
+        }
+
+        .result-container {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <div id="question-container" class="question-container">
+        <!-- Perguntas serão carregadas aqui -->
+    </div>
+    <div class="result-container" style="display:none;">
+        <p id="result-text"></p>
+        <button onclick="restartQuiz()">Iniciar novamente</button>
+    </div>
+</div>
+
+<script>
+    const questions = [
+    {
+        "question": "1. (CESPE/MPE-RR - 2017) De acordo com o Estatuto da Igualdade Racial, o estudo da história geral da África e da história da população negra do Brasil é obrigatório nos estabelecimentos de ensino:",
+        "options": [
+            "A) Infantil e fundamental.",
+            "B) Fundamental e médio.",
+            "C) Médio, apenas.",
+            "D) Infantil, fundamental e médio."
+        ],
+        "correctAnswer": 3
+    },
+    {
+        "question": "2. (CESPE/PC-BA - 2013) Considerando o que dispõe a legislação atual acerca de discriminação, julgue os itens que se seguem. Pratica crime o empregador que, por motivo de discriminação de raça ou cor, deixar de conceder equipamentos necessários ao empregado, em igualdade de condições com os demais trabalhadores.",
+        "options": [
+            "A) Certo.",
+            "B) Errado."
+        ],
+        "correctAnswer": 0
+    },
+    {
+    "question": "3. (CESPE/PC-GO - 2017) Uma jovem de vinte e um anos de idade, moradora da região Sudeste, inconformada com o resultado das eleições presidenciais de 2014, proferiu, em redes sociais na Internet, diversas ofensas contra nordestinos. Alertada de que estava cometendo um crime, a jovem apagou as mensagens e desculpou-se, tendo afirmado estar arrependida. Suas mensagens, porém, têm sido veiculadas por um sítio eletrônico que promove discurso de ódio contra nordestinos. No que se refere à situação hipotética precedente, assinale a opção correta, com base no disposto na Lei n.º 7.716/1989, que define os crimes resultantes de preconceito de raça e cor.",
+    "options": [
+        "A) Independentemente de autorização judicial, a autoridade policial poderá determinar a interdição das mensagens ou do sítio eletrônico que as veicula.",
+        "B) Configura-se o concurso de pessoas nessa situação, visto que o material produzido pela jovem foi utilizado por outra pessoa no sítio eletrônico mencionado.",
+        "C) O crime praticado pela jovem não se confunde com o de injúria racial.",
+        "D) Como se arrependeu e apagou as mensagens, a jovem não responderá por nenhum crime.",
+        "E) A conduta da jovem não configura crime tipificado na Lei n.º 7.716/1989."
+    ],
+    "correctAnswer": 1
+},
+{
+    "question": "4. (CESPE/TRE-BA - 2017) Caso um escritor publique um livro que contenha afirmações discriminatórias contra determinada comunidade étnica, assinale a alternativa correta.",
+    "options": [
+        "A) O escritor não poderá ser condenado por racismo, em razão do princípio da liberdade de expressão, conforme expresso pela lei pertinente aos crimes de racismo.",
+        "B) Os exemplares desse livro que estejam em circulação poderão ser imediatamente recolhidos, por ordem judicial.",
+        "C) Os exemplares existentes do livro não poderão ser destruídos por ordem judicial, mesmo após sentença transitada em julgado, por terem constituído prova da materialidade do delito.",
+        "D) Somente membros da comunidade étnica discriminada terão legitimidade para ingressar com ação judicial contra o escritor do livro.",
+        "E) Todos os indivíduos que adquirirem o referido livro serão, em consequência dessa compra, sujeitos ativos de crime resultante de preconceito de raça."
+    ],
+    "correctAnswer": 1
+},
+{
+    "question": "5. (CESPE/SEFAZ-RS - 2018) Instituído pelo Estatuto Nacional da Igualdade Racial — Lei n.º 12.288/2010 —, o Sistema Nacional de Promoção da Igualdade Racial (SINAPIR) tem por objetivo:",
+    "options": [
+        "A) Iniciar a ação penal em face de atitudes e práticas de intolerância religiosa nos meios de comunicação e em quaisquer outros locais.",
+        "B) Formular políticas, programas e projetos voltados para a inclusão da população negra no mercado de trabalho.",
+        "C) Descentralizar a implementação de ações afirmativas pelos governos estaduais, distrital e municipais.",
+        "D) Ratificar os compromissos assumidos pelo Brasil junto a organismos internacionais.",
+        "E) Instituir os conselhos para a aplicação do Fundo Nacional de Habitação de Interesse Social (FNHIS)."
+    ],
+    "correctAnswer": 1
+},
+    {
+        "question": "6. (IBFC/AGERBA - 2017) Assinale a alternativa correta, considerando as disposições da lei federal nº 12.288, de 20/07/2010 que institui o Estatuto da Igualdade Racial.",
+        "options": [
+            "A) O Poder Legislativo federal elaborará plano nacional de promoção da igualdade racial contendo as metas, princípios e diretrizes para a implementação da Política Nacional de Promoção da Igualdade Racial (PNPIR).",
+            "B) A elaboração, implementação, coordenação, avaliação e acompanhamento da Política Nacional de Promoção da Igualdade Racial (PNPIR), bem como a organização, articulação e coordenação do Sistema Nacional de Promoção da Igualdade Racial (Sinapir), serão efetivados pelo órgão responsável pela política de promoção da igualdade étnica em âmbito nacional.",
+            "C) É o Poder Legislativo federal autorizado a instituir fórum intergovernamental de promoção da igualdade étnica, a ser coordenado pelo órgão responsável pelas políticas educacionais gerais, com o objetivo de implementar estratégias que visem à incorporação da política nacional de promoção da igualdade étnica nas ações governamentais de Estados e Municípios.",
+            "D) As diretrizes das políticas nacional e regional de promoção da igualdade étnica serão elaboradas por órgão colegiado, independentemente de participação da sociedade civil.",
+            "E) Os Poderes Executivos estaduais, distrital e municipais, no âmbito das respectivas esferas de competência, poderão instituir conselhos de promoção da igualdade étnica, de caráter provisório e deliberativo, compostos exclusivamente por representantes de órgãos e entidades públicas."
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "7. (IBFC/EMBASA - 2017) Assinale a alternativa correta sobre as previsões da Lei Federal n° 12.288, de 20 de julho de 2010, que institui o Estatuto da Igualdade Racial, quanto à educação.",
+        "options": [
+            "A) Nas datas comemorativas de caráter cívico, os órgãos responsáveis pela educação determinarão a participação de intelectuais e representantes do movimento negro para debater com os estudantes suas vivências relativas ao tema em comemoração.",
+            "B) Os órgãos federais, distritais e estaduais de fomento à pesquisa e à pós-graduação deverão criar incentivos a pesquisas e a programas de estudo voltados para temas referentes às relações étnicas, aos quilombos e às questões pertinentes à população negra.",
+            "C) O Poder Executivo federal, por meio dos órgãos competentes, obrigará as instituições de ensino superior públicas e privadas, sem prejuízo da legislação em vigor, a resguardar os princípios da ética em pesquisa e apoiar grupos, núcleos e centros de pesquisa, nos diversos programas de pós-graduação que desenvolvam temáticas de interesse da população negra.",
+            "D) Os conteúdos referentes à história da população negra no Brasil serão ministrados no âmbito de todo o currículo escolar, resgatando sua contribuição decisiva para o desenvolvimento social, econômico, político e cultural do País."
+        ],
+        "correctAnswer": 3
+    },
+    {
+        "question": "8. (IBFC/AGERBA - 2017) Assinale a alternativa INCORRETA sobre os objetivos do Sistema Nacional de Promoção da Igualdade Racial (Sinapir), considerando as disposições da lei federal nº 12.288, de 20/07/2010 que institui o Estatuto da Igualdade Racial.",
+        "options": [
+            "A) Promover a igualdade étnica e o combate às desigualdades sociais resultantes do racismo, inclusive mediante adoção de ações afirmativas.",
+            "B) Formular políticas destinadas a combater os fatores de marginalização e a promover a integração social da população negra.",
+            "C) Centralizar a implementação de ações afirmativas no nível federal.",
+            "D) Articular planos, ações e mecanismos voltados à promoção da igualdade étnica.",
+            "E) Garantir a eficácia dos meios e dos instrumentos criados para a implementação das ações afirmativas e o cumprimento das metas a serem estabelecidas."
+        ],
+        "correctAnswer": 2
+    },
+    {
+        "question": "9. (CPCON/UEPB - 2017) Com relação à Lei nº 12.288/10 (Estatuto da Igualdade Racial), atente às assertivas abaixo e em seguida responda ao que se pede.\nI- Discriminação racial ou étnico-racial compreende-se como toda distinção, exclusão, restrição ou preferência baseada em raça, cor, descendência ou origem nacional ou étnica que tenha por objeto anular ou restringir o reconhecimento, gozo ou exercício, em igualdade de condições, de direitos humanos e liberdades fundamentais nos campos político, econômico, social, cultural ou em qualquer outro campo da vida pública ou privada.\nII- A centralização para a implementação das ações afirmativas pelos governos estaduais, distrital e municipais constitui um dos objetivos do Sistema Nacional de Promoção da Igualdade Racial.\nIII- Como população negra deve-se compreender o conjunto de pessoas que adotam auto definição preta ou parda para efeitos de fruição dos programas sociais estatuídos pela administração direta.\nEstá CORRETO o que se afirma:",
+        "options": [
+            "A) Apenas na afirmativa III.",
+            "B) Em todas as afirmativas.",
+            "C) Apenas nas afirmativas I e III.",
+            "D) Apenas na afirmativa I.",
+            "E) Apenas na afirmativa II."
+        ],
+        "correctAnswer": 2
+    },
+    {
+    "question": "10. (PR-4 UFRJ/UFRJ - 2017) Muitas vezes os jovens nas instituições escolares são reduzidos a estereótipos que são construídos em relação a ele e que podem promover conflitos entre estes e o mundo adulto, representado por direção, professores e funcionários da escola, bem como entre os próprios jovens. Quando os indivíduos são reduzidos aos estereótipos, a sociedade constrói teorias ou ideologias para explicar essa diferença e justificar a discriminação. Fixa-se uma imagem social do outro que ao ressaltar a diferença o transforma em problema social que assusta e incomoda. Isto acaba por justificar agressões e desrespeito ao outro. É dever do Estado e da sociedade garantir a igualdade de oportunidades, reconhecendo a todo cidadão brasileiro o seu direito à participação na comunidade, especialmente nas atividades políticas, econômicas, empresariais, educacionais, culturais e esportivas, defendendo sua dignidade e seus valores religiosos e culturais. Para isso, há leis e estatutos que asseguram estes direitos. O Estatuto da Igualdade Racial (Lei n° 12.288/2010) é destinado a garantir à população negra a efetivação da igualdade de oportunidades, a defesa dos direitos étnicos individuais, coletivos e difusos e o combate à discriminação e às demais formas de intolerância étnica. Marque a opção que está em DESACORDO com o que este Estatuto considera.",
+    "options": [
+        "A) Discriminação racial ou étnico-racial: toda distinção, exclusão, restrição ou preferência baseada em raça, cor, descendência ou origem nacional ou étnica que tenha por objeto anular ou restringir o reconhecimento, gozo ou exercício, em igualdade de condições, de direitos humanos e liberdades fundamentais nos campos político, econômico, social, cultural ou em qualquer outro campo da vida pública ou privada.",
+        "B) Desigualdade racial: toda situação injustificada de diferenciação de acesso e fruição de bens, serviços e oportunidades, nas esferas pública e privada, em virtude de raça, cor, descendência ou origem nacional ou étnica.",
+        "C) Desigualdade de gênero e raça: simetria existente no âmbito da sociedade que acentua a distância social entre mulheres negras e os demais segmentos sociais.",
+        "D) Políticas públicas: as ações, iniciativas e programas adotados pelo Estado no cumprimento de suas atribuições institucionais.",
+        "E) Ações afirmativas: os programas e medidas especiais adotados pelo Estado e pela iniciativa privada para a correção das desigualdades raciais e para a promoção da igualdade de oportunidades."
+    ],
+    "correctAnswer": "C"
+},
+{
+    "question": "11. (COPS-UEL/PC-PR - 2015) Quantos aos crimes de racismo definidos na Lei nº 7.716/1989, assinale a alternativa correta.",
+    "options": [
+        "A) A incitação pública ao racismo constitui delito de incitação ao crime definido no Art. 286 do Código Penal, não havendo na referida Lei disposição sobre tal conduta.",
+        "B) No caso de incitação ou induzimento ao preconceito racial praticado através da rede mundial de computadores, poderá o juiz determinar a interdição da mensagem ou página de informação.",
+        "C) São crimes de ação penal pública condicionada, dependendo de representação da vítima para propositura da ação penal.",
+        "D) A injúria qualificada pelo preconceito racial é crime definido na referida Lei, não se aplicando o crime de injúria definido no Art. 140 do Código Penal.",
+        "E) Não constitui crime definido na referida Lei o empregador que, motivado pelo preconceito racial, não conceder os equipamentos necessários ao empregado em igualdade de condições com os demais trabalhadores."
+    ],
+    "correctAnswer": "B"
+},
+{
+    "question": "12. (IBFC/PC-SE - 2014) A Lei n° 7.716/89 pune criminalmente algumas formas de preconceito e discriminação praticados contra a pessoa humana. NÃO serão punidos criminalmente por esta lei o preconceito e a discriminação decorrente de:",
+    "options": [
+        "A) Religião.",
+        "B) Procedência nacional.",
+        "C) Etnia.",
+        "D) Orientação sexual."
+    ],
+    "correctAnswer": "D"
+},
+{
+    "question": "13. (FUNDATEC/IGP-RS - 2017) De acordo com a Lei nº 12.288/2010 (Estatuto da Igualdade Racial), “toda distinção, exclusão, restrição ou preferência baseada em raça, cor, descendência ou origem nacional ou étnica que tenha por objeto anular ou restringir o reconhecimento, gozo ou exercício, em igualdade de condições, de direitos humanos e liberdades fundamentais nos campos político, econômico, social, cultural ou em qualquer outro campo da vida pública ou privada” corresponde ao conceito de:",
+    "options": [
+        "A) Desigualdade racial.",
+        "B) Desigualdade de gênero.",
+        "C) Discriminação racial.",
+        "D) Discriminação de gênero.",
+        "E) Descriminalização racial."
+    ],
+    "correctAnswer": "C"
+},
+{
+    "question": "14. (IBFC/EMBASA - 2017) Assinale a alternativa correta sobre o que devem ser consideradas ações afirmativas de acordo com a Lei Federal nº 12.288, de 20 de julho de 2010, que institui o Estatuto da Igualdade Racial.",
+    "options": [
+        "A) As políticas de tratamento absolutamente igualitário dos cidadãos.",
+        "B) Os programas e as medidas especiais adotados exclusivamente pelo Estado para a proibição das desigualdades de oportunidades.",
+        "C) Os programas e as medidas especiais adotados pelo Estado e pela iniciativa privada para a correção das desigualdades raciais e para a promoção da igualdade de oportunidades.",
+        "D) As campanhas da iniciativa privada para obtenção de vantagens pela diminuição dos tratamentos desiguais."
+    ],
+    "correctAnswer": "C"
+},
+{
+    "question": "15. (IBFC/EMBASA - 2017) Assinale a alternativa INCORRETA sobre a prática da capoeira de acordo com a Lei Federal n° 12.288, de 20 de julho de 2010, que institui o Estatuto da Igualdade Racial.",
+    "options": [
+        "A) O poder público garantirá o registro e a proteção da capoeira, em todas as suas modalidades, como bem de natureza imaterial e de formação da identidade cultural brasileira.",
+        "B) O poder público buscará garantir, por meio dos atos normativos necessários, a preservação dos elementos formadores tradicionais da capoeira nas suas relações internacionais.",
+        "C) A capoeira é reconhecida como desporto de criação nacional.",
+        "D) É obrigatório o ensino da capoeira nas instituições públicas e privadas pelos capoeiristas e mestres tradicionais, pública e formalmente reconhecidos."
+    ],
+    "correctAnswer": "D"
+},
+{
+    "question": "16. (IBFC/AGERBA - 2017) Considerando as disposições da lei federal nº 12.288, de 20/07/2010 que institui o Estatuto da Igualdade Racial, assinale a alternativa correta sobre o significado da sigla SINAPIR.",
+    "options": [
+        "A) Serviço de Integração e Autopromoção Racial.",
+        "B) Serviço Nacional de Apoio às Práticas de Integração Racial.",
+        "C) Sistema Nacional de Promoção da Igualdade Racial.",
+        "D) Sistema Nacional de Promoção da Integração Racial.",
+        "E) Sindicato Nacional de Participação Racial."
+    ],
+    "correctAnswer": "C"
+}
+
+
+
+];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function showQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            document.getElementById("question-container").style.display = "none";
+            document.querySelector(".result-container").style.display = "block";
+            document.getElementById("result-text").innerHTML = `Você acertou ${score} de ${questions.length} perguntas.`;
+            return;
+        }
+
+        const question = questions[currentQuestionIndex];
+        const questionContainer = document.getElementById("question-container");
+
+        questionContainer.innerHTML = `
+            <p><strong>${question.question}</strong></p>
+            ${question.options.map((option, index) => 
+                `<div class="option" onclick="checkAnswer(${index})">${option}</div>`
+            ).join('')}
+        `;
+    }
+
+    function checkAnswer(selectedIndex) {
+        const question = questions[currentQuestionIndex];
+
+        if (selectedIndex === question.correctAnswer) {
+            score++;
+        }
+
+        currentQuestionIndex++;
+        showQuestion();
+    }
+
+    function restartQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        document.querySelector(".result-container").style.display = "none";
+        document.getElementById("question-container").style.display = "block";
+        showQuestion();
+    }
+
+    showQuestion();
+</script>
+
+    <a href="index.html">PAGINA INICIAL</a>
+</body>
+</html>

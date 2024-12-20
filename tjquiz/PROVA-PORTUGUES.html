@@ -1,0 +1,676 @@
+<!DOCTYPE html> 
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova de Português</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="quiz-container">
+    <div id="question-container" class="question-container">
+        <!-- Perguntas serão carregadas aqui -->
+    </div>
+    <div class="result-container" style="display:none;">
+        <p id="result-text"></p>
+        <button onclick="restartQuiz()">Iniciar novamente</button>
+    </div>
+</div>
+
+<script>
+    const questions = [
+    {
+        "question": "1. (PREFEITURA DE CARIACICA–ES / 2020) Assinale a alternativa que apresenta uma palavra que NÃO tenha um dígrafo consonantal, ou seja, duas letras que, juntas, representam um som de consoante.",
+        "options": [
+            "a) Esquecer",
+            "b) Trabalhar",
+            "c) Sorriso",
+            "d) Principalmente"
+        ],
+        "correctAnswer": "d"
+    },
+    {
+        "question": "2. (ALEPI / 2020) Conhecer os sons das letras, a pronúncia dos dígrafos e dífonos, dos encontros vocálicos e dos consonantais, dos tritongos, dos ditongos e dos hiatos faz parte da boa Oratória. A única sequência que apresenta CORREÇÃO quanto a isso é:",
+        "options": [
+            "a) A palavra 'subsídio' possui o som de /zê/ no segundo 's'.",
+            "b) As palavras 'sintaxe' e 'inexorável' possuem a letra 'x' com som de /ks/.",
+            "c) As palavras 'gratuito', 'fortuito' e 'circuito' têm tonicidade no 'i'.",
+            "d) As palavras 'distinguir', 'extinguir' e 'adquirir' não têm o 'u' pronunciado.",
+            "e) As palavras como 'cruz' e 'mas' são pronunciadas com o som /iz/."
+        ],
+        "correctAnswer": "d"
+    },
+    {
+    "question": "3. Assinale a alternativa em que os termos destacados foram acentuados de acordo com a mesma norma gramatical.",
+    "options": [
+        "a) “O surpreendente efeito da positividade tóxica na saúde mental”.",
+        "b) “Pode parecer contraditório, mas a positividade pode ser tóxica.”.",
+        "c) “O psicólogo da saúde Antonio Rodellar, especialista em transtornos de ansiedade e hipnose clínica, prefere falar em ‘emoções desreguladas’ do que ‘negativas’.”.",
+        "d) “Gutiérrez acredita que houve um aumento do positivismo tóxico ‘nos últimos anos’, mas principalmente durante a pandemia.”.",
+        "e) “Como aplicar isso na prática? Em vez de dizer ‘não pense nisso, seja positivo’, diga ‘me diz o que você está sentindo, eu te escuto’.”."
+    ],
+    "correctAnswer": "a"
+},
+{
+    "question": "4. Considerando as regras de acentuação dos vocábulos em Língua Portuguesa, assinale a alternativa cujo termo destacado receba acento pelo mesmo motivo que “antropológica”, empregado em “A família, sob uma perspectiva antropológica, é um grupo social concreto (...)”.",
+    "options": [
+        "a) “A família, sob uma perspectiva antropológica, é um grupo social concreto [...]”.",
+        "b) “Essas relações sociais podem contribuir para a prevenção do adoecimento mental, podendo fazer parte de um mecanismo chamado resiliência.”.",
+        "c) “Todavia, o estado emocional do outro também precisa ser levado em consideração, [...]”.",
+        "d) “A abordagem não empática desse sofrimento pode desgastar ainda mais as relações interpessoais, [...]”.",
+        "e) “Oferecer ajuda com diálogo aberto e uma visão menos estigmatizada do sofrimento mental, pode ser um grande passo para uma relação saudável.”."
+    ],
+    "correctAnswer": "a"
+},
+{
+    "question": "5. Analise as afirmativas quanto às recomendações da norma culta sobre acentuação gráfica:\nI. Será apresentada uma pequena síntese do trabalho científico.\nII. A vítima, até o presente instante, permanece em estado patético.\nIII. O Banco Central intervém toda vez que o dólar dispara no mercado.\nIV. O catálogo apresentado no brechó era de uma sutileza profundamente estonteante.\nAssinale a alternativa correta.",
+    "options": [
+        "a) Somente as afirmativas I e IV são verdadeiras.",
+        "b) Somente as afirmativas II e IV são verdadeiras.",
+        "c) Somente as afirmativas II e III são verdadeiras.",
+        "d) Somente as afirmativas III e IV são verdadeiras."
+    ],
+    "correctAnswer": "b"
+},
+{
+    "question": "6. Assinale a alternativa em que um dos vocábulos difere dos outros dois quanto à razão por que recebe acento gráfico.",
+    "options": [
+        "a) Índia – Tailândia – sobrevivência.",
+        "b) Catástrofes – período – árabes.",
+        "c) Também – após – voltará.",
+        "d) Coronavírus – inimagináveis – possível.",
+        "e) Diária – saúdam – negócio."
+    ],
+    "correctAnswer": "a"
+},
+{
+    "question": "7. Assinale a alternativa cujas palavras são acentuadas pela mesma razão:",
+    "options": [
+        "a) país – matrícula.",
+        "b) até – através.",
+        "c) está – deficiência.",
+        "d) pós – país.",
+        "e) através – intérpretes."
+    ],
+    "correctAnswer": "d"
+},
+    {
+        "question": "8. (IE-PREV / ANALISTA PREVID. / 2022) Assinale a alternativa em que os termos destacados foram acentuados de acordo com a mesma norma gramatical.",
+        "options": [
+            "a) “O surpreendente efeito da positividade tóxica na saúde mental”.",
+            "b) “Pode parecer contraditório, mas a positividade pode ser tóxica.”.",
+            "c) “O psicólogo da saúde Antonio Rodellar, especialista em transtornos de ansiedade e hipnose clínica, prefere falar em ‘emoções desreguladas’ do que ‘negativas’.”.",
+            "d) “Gutiérrez acredita que houve um aumento do positivismo tóxico ‘nos últimos anos’, mas principalmente durante a pandemia.”.",
+            "e) “Como aplicar isso na prática? Em vez de dizer ‘não pense nisso, seja positivo’, diga ‘me diz o que você está sentindo, eu te escuto’.”."
+        ],
+        "correctAnswer": "a"
+    },
+    {
+        "question": "9. (PREF. JOÃO PESSOA-PB / 2021) Considerando as regras de acentuação dos vocábulos em Língua Portuguesa, assinale a alternativa cujo termo destacado receba acento pelo mesmo motivo que “antropológica”, empregado em “A família, sob uma perspectiva antropológica, é um grupo social concreto (...)”.",
+        "options": [
+            "a) “A família, sob uma perspectiva antropológica, é um grupo social concreto [...]”.",
+            "b) “Essas relações sociais podem contribuir para a prevenção do adoecimento mental, podendo fazer parte de um mecanismo chamado resiliência.”.",
+            "c) “Todavia, o estado emocional do outro também precisa ser levado em consideração, [...]”.",
+            "d) “A abordagem não empática desse sofrimento pode desgastar ainda mais as relações interpessoais, [...]”.",
+            "e) “Oferecer ajuda com diálogo aberto e uma visão menos estigmatizada do sofrimento mental, pode ser um grande passo para uma relação saudável.”."
+        ],
+        "correctAnswer": "a"
+    },
+    {
+        "question": "10. (PREF. MARAVILHA-SC / 2021) Analise as afirmativas quanto às recomendações da norma culta sobre acentuação gráfica: I. Será apresentada uma pequena síntese do trabalho científico. II. A vítima, até o presente instante, permanece em estado patético. III. O Banco Central intervém toda vez que o dólar dispara no mercado. IV. O catálogo apresentado no brechó era de uma sutileza profundamente estonteante. Assinale a alternativa correta.",
+        "options": [
+            "a) Somente as afirmativas I e IV são verdadeiras.",
+            "b) Somente as afirmativas II e IV são verdadeiras.",
+            "c) Somente as afirmativas II e III são verdadeiras.",
+            "d) Somente as afirmativas III e IV são verdadeiras."
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "11. (GHC-RS / 2021) Assinale a alternativa em que um dos vocábulos difere dos outros dois quanto à razão por que recebe acento gráfico.",
+        "options": [
+            "a) Índia – Tailândia – sobrevivência.",
+            "b) Catástrofes – período – árabes.",
+            "c) Também – após – voltará.",
+            "d) Coronavírus – inimagináveis – possível.",
+            "e) Diária – saúdam – negócio."
+        ],
+        "correctAnswer": "a"
+    },
+    {
+        "question": "12. (FURB-SC / 2021) Assinale a alternativa cujas palavras são acentuadas pela mesma razão:",
+        "options": [
+            "a) país – matrícula.",
+            "b) até – através.",
+            "c) está – deficiência.",
+            "d) pós – país.",
+            "e) através – intérpretes."
+        ],
+        "correctAnswer": "d"
+    },
+    {
+        "question": "13. (SEED-PR / 2021) Os vocábulos “países” e “línguas”, presentes no texto 15A2-I, possuem a mesma classificação quanto à tonicidade, porém um difere do outro quanto à regra empregada para a utilização do acento agudo. Assinale a opção que indica a correta classificação desses vocábulos quanto à tonicidade e que explica corretamente as regras de acentuação aplicadas a eles.",
+        "options": [
+            "a) Ambos os vocábulos são paroxítonos, contudo “línguas” é acentuado porque sua última sílaba contém um ditongo crescente átono, ao passo que “países” é acentuado porque sua sílaba tônica forma um hiato com a vogal da sílaba anterior.",
+            "b) Ambos os vocábulos são proparoxítonos, contudo “línguas” é acentuado porque sua última sílaba contém um ditongo decrescente átono, ao passo que “países” é acentuado porque sua última sílaba termina com “s”.",
+            "c) Ambos os vocábulos são paroxítonos, contudo “línguas” é acentuado porque sua última sílaba termina com “s”, ao passo que “países” é acentuado porque sua sílaba tônica forma um hiato com a vogal da sílaba anterior.",
+            "d) Ambos os vocábulos são oxítonos, contudo “línguas” é acentuado porque tem três sílabas, ao passo que “países” é acentuado porque sua sílaba tônica contém um ditongo crescente.",
+            "e) Ambos os vocábulos são proparoxítonos, contudo “línguas” é acentuado porque tem duas sílabas, ao passo que “países” é acentuado porque tem três sílabas."
+        ],
+        "correctAnswer": "a"
+    },
+    {
+        "question": "14. (CRECI - 14ª Região (MS) / 2021) Os vocábulos “José”, “está” e “prevê” são acentuados graficamente de acordo com a mesma regra de acentuação gráfica.",
+        "options": [
+            "a) Verdadeiro.",
+            "b) Falso."
+        ],
+        "correctAnswer": "a"
+    },
+    {
+        "question": "15. (TIMBOPREV - SC / 2021) Analise as justificativas sobre a acentuação das palavras retiradas do texto: I- “Timbó” e “estará” – Acentuam-se as oxítonas terminadas em ‘O’ e ‘A’. II- “Combustíveis” e “município” – Acentuam-se as paroxítonas terminadas em ditongos. III- “Também” – Acentuam-se as oxítonas terminadas em ‘EM’. É correto o que se afirma em:",
+        "options": [
+            "a) I e II, apenas.",
+            "b) I, II e III.",
+            "c) II e III, apenas.",
+            "d) I e III, apenas.",
+            "e) III, apenas."
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "16. (PREF. PORTO ALEGRE-RS / 2021) Sobre os vocábulos acentuados em “Essa sincronização fisiológica foi registrada durante o exercício de percussão musical especialmente desenvolvido para o estudo em uma colaboração entre neurocientistas sociais e acadêmicos do Departamento de Música da Universidade Bar-Ilan, de Ramat Gan”, afirma-se que:",
+        "options": [
+            "a) Apenas I.",
+            "b) Apenas II.",
+            "c) Apenas III.",
+            "d) Apenas I e II.",
+            "e) Apenas II e III."
+        ],
+        "correctAnswer": "e"
+    },
+    {
+        "question": "17. (PREF. BALNEÁRIO CAMBORIÚ-SC / 2021) Assinale a alternativa correta.",
+        "options": [
+            "a) As palavras 'há' e 'lá' recebem acento gráfico, pois são monossílabos átonos terminados 'a'.",
+            "b) As palavras 'superfície' e 'silêncio' são acentuadas graficamente pela mesma regra.",
+            "c) A palavra 'apóio' (do verbo apoiar) recebe um acento gráfico para não ser confundida, no contexto escrito, com o substantivo 'apoio'.",
+            "d) As palavras 'países' e 'Itaú' são acentuadas por regras diferentes.",
+            "e) As palavras paroxítonas são obrigatoriamente acentuadas. Por essa regra é que se justificam acentos gráficos em: 'médico, xícara, ônibus'."
+        ],
+        "correctAnswer": "d"
+    },
+    {
+        "question": "18. (PREF. JARDINÓPOLIS-SC / 2021) Assinale a alternativa em que todas as palavras estão acentuadas corretamente.",
+        "options": [
+            "a) saúde, saída, assembléia, ideia, colméia.",
+            "b) saúde, saída, assembleia, ideia, colmeia.",
+            "c) saude, saída, assembléia, ideia, colmeia.",
+            "d) saude, saída, assembleia, idéia, colmeia.",
+            "e) saúde, saída, assembleia, idéia, colméia."
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "19. (PREF. ARAÇOIABA DA SERRA-SP / 2021) Da mesma forma que 'heroico', o vocábulo que perdeu o acento com o Novo Acordo Ortográfico foi:",
+        "options": [
+            "a) tenue",
+            "b) chapeu",
+            "c) pasteis",
+            "d) ideia"
+        ],
+        "correctAnswer": "d"
+    },
+    {
+        "question": "20. (PREF. ARAÇOIABA DA SERRA-SP/ 2021) As palavras destacadas no trecho são classificadas, respectivamente, quanto à acentuação gráfica como:",
+        "options": [
+            "a) Proparoxítona, paroxítona terminada em ditongo decrescente, acentuam-se o 'i' tônico quando forma hiato com a vogal anterior, estando eles sozinhos na sílaba ou acompanhados apenas de 's', desde que não sejam seguidos por '-nh'.",
+            "b) Proparoxítona, paroxítona terminada em ditongo crescente, acentuam-se o 'i' tônico quando forma hiato com a vogal anterior, estando eles sozinhos na sílaba ou acompanhados apenas de 's', desde que não sejam seguidos por '-nh'.",
+            "c) Proparoxítona, proparoxítona, acentuam-se o 'i' tônico quando forma hiato com a vogal anterior.",
+            "d) Paroxítona, paroxítona, acentuam-se o 'i' tônico quando forma hiato com a vogal anterior."
+        ],
+        "correctAnswer": "a"
+    },
+    {
+        "question": "21. (CIESP / 2021) A alternativa em que todas as palavras obedecem à mesma norma de acentuação gráfica é:",
+        "options": [
+            "a) saúde - solúvel - saída",
+            "b) café - você - corrói",
+            "c) pátria - indícios - critério",
+            "d) pólo - álbum - táxi"
+        ],
+        "correctAnswer": "c"
+    },
+    {
+        "question": "22. (CIESP / 2021) Assinale a alternativa cuja palavra negritada NÃO é acentuada pela mesma regra de acentuação da palavra destacada no trecho.",
+        "options": [
+            "a) 'Na época em que nossa espécie vive a emergência climática [...]'",
+            "b) 'Todos nós, não só os indígenas, vamos ficar sem respirar.'",
+            "c) '[...] para responder aos desafios do colapso climático que atingirá a todos [...].'",
+            "d) 'Ameaçaram a sobrevivência da própria espécie na única casa que dispõem.'"
+        ],
+        "correctAnswer": "d"
+    },
+    {
+        "question": "23. (PREF. SÃO JOÃO DO SUL-SC / 2021) Assinale a alternativa que contenha somente palavras acentuadas motivadas pela mesma regra da palavra 'biquíni':",
+        "options": [
+            "a) Secretária, táxi, glória",
+            "b) Açaí, oxigênio, álbum",
+            "c) Ônibus, psicólogo, bíceps",
+            "d) Órgão, revólver, parabéns",
+            "e) Café, edifício, tórax"
+        ],
+        "correctAnswer": "c"
+    },
+    {
+        "question": "24. (PREF. DIONÍSIO CERQUEIRA-SC / 2021) Assinale a alternativa em que a palavra é acentuada pela mesma regra de acentuação da palavra 'café' (linha 11):",
+        "options": [
+            "A) Pé.",
+            "B) Cipó.",
+            "C) Lápis.",
+            "D) Bússola."
+        ],
+        "correctAnswer": "B",
+        "explanation": "A palavra 'café' é uma oxítona terminada em 'é', que exige acento gráfico. A única alternativa que também apresenta uma oxítona terminada em 'ó' é 'cipó'."
+    },
+    {
+        "question": "25. (PREF. SÃO JOÃO BATISTA-SC / 2021) Assim como a palavra 'aparência' é acentuada, acentua-se a palavra:",
+        "options": [
+            "A) Árvore.",
+            "B) Matemática.",
+            "C) Fragrância.",
+            "D) Nenhuma das alternativas."
+        ],
+        "correctAnswer": "C",
+        "explanation": "A palavra 'aparência' é acentuada por ser uma paroxítona terminada em ditongo crescente (ência). O mesmo ocorre com 'fragrância'."
+    },
+    {
+        "question": "26. (PREF. CARIACICA-ES / 2020) 'Será que têm bagagem suficiente para criticar?' – 'será' recebe acento por se tratar de uma oxítona terminada em 'a'.",
+        "options": [
+            "A) Correta.",
+            "B) Incorreta."
+        ],
+        "correctAnswer": "A",
+        "explanation": "A palavra 'será' é uma oxítona terminada em 'a', o que justifica o uso do acento gráfico."
+    },
+    {
+        "question": "27. (PREF. CARIACICA-ES / 2020) 'É incrível e, ao mesmo tempo, muito preocupante.' – o termo em destaque recebe o acento por corresponder a uma paroxítona terminada em 'L'.",
+        "options": [
+            "A) Correta.",
+            "B) Incorreta."
+        ],
+        "correctAnswer": "A",
+        "explanation": "A palavra 'incrível' é uma paroxítona terminada em 'l', o que determina sua acentuação gráfica."
+    },
+    {
+        "question": "28. (CRN 2ª REGIÃO / 2020) A mesma regra explica a acentuação gráfica dos vocábulos 'açúcar', 'substância', 'óleo' e 'técnicas', presentes no último parágrafo do texto.",
+        "options": [
+            "A) Correta.",
+            "B) Incorreta."
+        ],
+        "correctAnswer": "B",
+        "explanation": "Essas palavras são acentuadas por regras diferentes: 'Açúcar': paroxítona terminada em 'r'. 'Substância': paroxítona terminada em ditongo crescente. 'Óleo': paroxítona terminada em ditongo decrescente. 'Técnicas': proparoxítona."
+    },
+    {
+        "question": "29. (TRE-PA / 2020) Quanto às normas de acentuação gráfica, assinale a alternativa correta:",
+        "options": [
+            "A) diastole, esplendor, pincel, caqui.",
+            "B) bambu, atras, paranoico, diarreia.",
+            "C) paranoia, raiz, gratuito, recorde.",
+            "D) pivo, rubrica, menu, flo."
+        ],
+        "correctAnswer": "C",
+        "explanation": "As palavras da alternativa C estão escritas de forma correta e seguem as regras de acentuação gráfica."
+    },
+    {
+        "question": "30. (CRMV-AM / 2020) As palavras 'pássaros', 'aquático' e 'poluídas' são acentuadas de acordo com a mesma regra de acentuação gráfica.",
+        "options": [
+            "A) Correta.",
+            "B) Incorreta."
+        ],
+        "correctAnswer": "B",
+        "explanation": "Essas palavras têm regras diferentes: 'Pássaros': proparoxítona. 'Aquático': proparoxítona. 'Poluídas': paroxítona com hiato tônico."
+    },
+    {
+      "question": "31. (CRESS-SC / 2019) Os vocábulos 'ciúme', 'atribuída' e 'reúne' são acentuados graficamente de acordo com mesma regra de acentuação gráfica.",
+      "options": [
+        "a) Correta",
+        "b) Incorreta"
+      ],
+      "correctAnswer": "a"
+    },
+    {
+    "question": "32. (IF-ES / 2019) É aplicável a mesma justificativa para se acentuar as palavras 'raízes', 'artífices' e 'país'.",
+    "options": [
+        "a) Correta",
+        "b) Incorreta"
+    ],
+    "correctAnswer": "b"
+    },
+    {
+      "question": "33. (FURB-SC / 2021) Em um país onde, de acordo com dados do Censo da Educação Superior de 2018, apenas 0,5% dos 8,45 milhões de estudantes possuem alguma deficiência, o assunto da inclusão social dessas pessoas no ambiente acadêmico ainda _____ muito o que avançar. Assinale a alternativa que completa correta e respectivamente as lacunas do texto:",
+      "options": [
+        "a) têm – sob – sobre – tem",
+        "b) tem – sobre – sobre – tem",
+        "c) têm – sob – sob – têm",
+        "d) tem – sobre – sob – têm",
+        "e) tem – sob – sob – tem"
+      ],
+      "correctAnswer": "d"
+    },
+    {
+      "question": "34. (CRECI - 14ª Região (MS) / 2021) Os vocábulos 'têm', 'já' e 'é' são acentuados graficamente de acordo com a mesma regra de acentuação gráfica.",
+      "options": [
+        "a) Correta",
+        "b) Incorreta"
+      ],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "35. (PREF. CARIACICA-ES / 2020) Tendo em vistas as regras de acentuação gráfica da Língua Portuguesa, julgue o item a seguir: 'Será que eles têm bagagem suficiente para criticar?' – o verbo 'ter', nesse contexto, recebe acento para que haja concordância com seu sujeito.",
+      "options": [
+        "a) Correta",
+        "b) Incorreta"
+      ],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "36. (MPE-GO / 2019) 'Tem' é o verbo ter no plural e 'têm' é o verbo ter no singular.",
+      "options": [
+        "a) Correta",
+        "b) Incorreta"
+      ],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "37. (PREF. MARAVILHA-SC / 2021) De acordo com a ortografia, marque (V) para a frase grafada corretamente ou (F) para a frase que apresenta erro ortográfico e, em seguida, assinale a alternativa que apresenta a sequência correta.",
+      "options": [
+        "a) V – V – V – F.",
+        "b) V – F – V – V.",
+        "c) F – F – V – F.",
+        "d) F – F – V – V."
+      ],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "38. (PREF. FRECHEIRINHA-CE / 2021) São escritos com H inicial, todos os vocábulos da alternativa:",
+      "options": [
+        "a) Húmido / hipismo / herbívoro",
+        "b) Halucinação / hipótese / hesitar.",
+        "c) Hortênsia / hérnia / haurir.",
+        "d) Hombreira / hindu / hervateiro",
+        "e) Halteres / húmero / hinquilino."
+      ],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "39. (PREF. PORTO ALEGRE-RS / 2021) Assinale a alternativa cujas palavras estejam corretamente grafadas:",
+      "options": [
+        "a) alto-falantes – previsível – execução – constitui",
+        "b) auto-falantes – previzível – execussão – constitue",
+        "c) altofalantes – previsível – execussão – constitui",
+        "d) autofalantes – previsível – execução – constitue",
+        "e) altofalantes – previzível – execussão – constitue"
+      ],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "40. (PREF. JARDINÓPOLIS-SC / 2021) Assinale a alternativa em que todas as palavras apresentam ortografia correta:",
+      "options": [
+        "a) enchada, inxado, mexer, axou.",
+        "b) enxada, inchado, mecher, achou",
+        "c) enxada, inchado, mexer, achou.",
+        "d) enchada, inxado, mecher, axou",
+        "e) enxada, inchado, mexer, axou"
+      ],
+      "correctAnswer": "c"
+    },
+    {
+      "question": "41. (PREF. FRECHEIRINHA-CE / 2021) Analise as alternativas a seguir e marque aquela em que a acentuação gráfica e a ortografia estão CORRETAS.",
+      "options": [
+        "a) Espero que ela me abençõe e eu possa ir direto para o céu.",
+        "b) O virus da Covid 19 é altamente transmiscível.",
+        "c) O olhar do urubu, uma espécie de abutre, parente próximo do condor, paralizou os gestos do garoto, ali, fascinado.",
+        "d) Concerteza, aquele repórter era apaixonado por estudos sobre asteroides, que são corpos pequenos e possuem órbita definida ao redor do Sol.",
+        "e) O excesso de carboidratos provoca aumento nos níveis de triglicérides e pode resultar no acúmulo de gordura em órgãos vitais."
+      ],
+      "correctAnswer": "c"
+    },
+    {
+      "question": "42. (ALEPI / 2020) Há apenas uma palavra escrita INCORRETAMENTE na sequência:",
+      "options": [
+        "a) vazio – vasilhame – vassoura – vaso – crasso.",
+        "b) hélice – humedecido – húmido – húmus – herbáceo.",
+        "c) nascer – desfalescer – adolescência – piscina – abstenção.",
+        "d) gesto – jeito – jocoso – jenipapo – asilado – abalizado.",
+        "e) exceção – excetuar – exceto – estender – extensão."
+      ],
+      "correctAnswer": "a"
+    },
+    {
+        "question": "43. (FURB-SC / 2021) A exemplo de 'Pós-Graduação', cujo prefixo sempre exige hífen, assinale a alternativa com outro prefixo ou falso prefixo que sempre exige hífen:",
+        "options": [
+            "a) co",
+            "b) ex",
+            "c) bio",
+            "d) geo",
+            "e) hidro"
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "44. (SEED-PR / 2021) Assinale a opção em que a palavra apresentada está de acordo com a atual ortografia oficial da língua portuguesa:",
+        "options": [
+            "a) seminternato",
+            "b) hiperssensibilidade",
+            "c) contra-regra",
+            "d) mão-de-obra",
+            "e) autoanálise"
+        ],
+        "correctAnswer": "e"
+    },
+    {
+        "question": "45. (PREF. IRATI-PR / 2021) Assinale a alternativa que contenha o uso correto do hífen em todas as palavras:",
+        "options": [
+            "a) anti-horário, hiper-humano, super-homem.",
+            "b) ultrahumano, mini-hotel, auto-estima.",
+            "c) anticárie, ante-ontem, pós-eleição.",
+            "d) autorrespeito, ultra-som, superhomem.",
+            "e) casa-geminada, mini-hotel, anti-cárie."
+        ],
+        "correctAnswer": "a"
+    },
+    {
+        "question": "46. (PREF. SEARA-SC / 2021) Assinale a alternativa na qual há o emprego equivocado do hífen:",
+        "options": [
+            "a) Vice-presidente",
+            "b) Micro-ônibus",
+            "c) Guarda-chuva",
+            "d) Couve-flor",
+            "e) Dia-a-día"
+        ],
+        "correctAnswer": "e"
+    },
+    {
+        "question": "47. (PREF. JARDINÓPOLIS-SC / 2021) Assinale a alternativa que apresenta a sequência correta quanto ao uso do hífen:",
+        "options": [
+            "a) alto-mar, boia-fria, tio-avô, vaga-lume.",
+            "b) alto-mar, boia-fria, tio-avô, vaga-lume.",
+            "c) alto mar, boia-fria, tio-avô, vaga-lume.",
+            "d) alto-mar, boia-fria, tio avô, vaga-lume.",
+            "e) alto-mar, boia fria, tio avô, vaga-lume."
+        ],
+        "correctAnswer": "a"
+    },
+    {
+        "question": "48. (PREF. MONDAÍ-SC / 2021) Com base nas regras do emprego do hífen, assinale a alternativa correta:",
+        "options": [
+            "a) Não se emprega hífen nas palavras compostas que designam espécies botânicas e zoológicas, estejam ou não ligadas por preposição ou qualquer outro elemento.",
+            "b) Não se emprega hífen nos topônimos compostos iniciados pelos adjetivos 'grã-, grão-' ou por forma verbal ou cujos elementos estejam ligados por artigo.",
+            "c) Emprega-se hífen em vocábulos compostos, formados por 'substantivo + substantivo', nos quais o segundo substantivo indique forma, finalidade ou tipo.",
+            "d) Emprega-se hífen nas ligações verbais, formadoras de locuções verbais, com o verbo 'haver' + preposição 'de'."
+        ],
+        "correctAnswer": "c"
+    },
+    {
+        "question": "49. (PM-BA / 2020) Observe a charge abaixo e assinale a alternativa que preencha correta e respectivamente as lacunas do enunciado. A fala do personagem da esquerda diz respeito ao sinal de _________ que foi abolido com o novo acordo ortográfico, assim como também o _________ das palavras destacadas na fala do personagem da direita.",
+        "options": [
+            "a) dois pontos / travessão.",
+            "b) trema / hífen.",
+            "c) reticências / traço.",
+            "d) dois pontos / hífen.",
+            "e) reticências / travessão."
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "50. (TRE-PA / 2020) Quanto às regras de ortografia, assinale a alternativa em que há uma palavra grafada incorretamente:",
+        "options": [
+            "a) super-homem, sobrenatural, cosseno.",
+            "b) cooperador, coexistente, agroindustrial.",
+            "c) anti-inflacionário, pan-americano, autoescolar.",
+            "d) girassol, hiper-ativo, recém-casado."
+        ],
+        "correctAnswer": "d"
+    },
+    {
+        "question": "51. (IF-MS / 2019) Assinale a alternativa na qual todas as palavras estão grafadas CORRETAMENTE:",
+        "options": [
+            "a) idéia, jiboia, co-orientador.",
+            "b) idéia, jibóia, coorientador.",
+            "c) ideia, jiboia, coorientador.",
+            "d) ideia, jibóia, co-orientador.",
+            "e) idéia, jibóia, co-orientador."
+        ],
+        "correctAnswer": "c"
+    },
+    {
+        "question": "52. (PREF. IRATI-SC / 2021) Marque a alternativa que apresenta todas as palavras escritas corretamente.",
+        "options": [
+            "a) giboia, jiló, jipe, hoje.",
+            "b) jiboia, giló, jipe, hoje.",
+            "c) jiboia, jiló, gipe, hoge.",
+            "d) jiboia, jiló, jipe, hoje.",
+            "e) giboia, jiló, jipe, hoge."
+        ],
+        "correctAnswer": "d"
+    },
+    {
+        "question": "53. (PREF. IRATI-SC / 2021) Assinale a alternativa que apresenta todas as palavras escritas corretamente.",
+        "options": [
+            "a) desfecho, enxugar, enxada, inchar.",
+            "b) desfexo, enxugar, enxada, inchar.",
+            "c) desfecho, enchugar, enxada, inchar.",
+            "d) desfecho, enxugar, enchada, inchar.",
+            "e) desfecho, enxugar, enxada, inxar."
+        ],
+        "correctAnswer": "a"
+    },
+    {
+        "question": "54. (PREF. BARRA BONITA-SC / 2021) Assinale a alternativa em que pelo menos uma das palavras deveria ter sido escrita com J e não com G:",
+        "options": [
+            "a) Estágio – Privilégio",
+            "b) Pagem – Cangica.",
+            "c) Prestígio – Relógio.",
+            "d) Refúgio – Vertiginoso."
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "55. (IADES / CRN-3ª REGIÃO / 2019) A respeito do emprego de abreviaturas e siglas, assinale a alternativa correta.",
+        "options": [
+            "a) Pontos de separação são usados entre as letras que formam uma abreviatura.",
+            "b) Formas abreviadas de Vossa Excelência, Vossa Magnificência e Vossa Senhoria são respectivamente, V. Ex. ª, V. Mag. ª e V. S. ª.",
+            "c) Formações de siglas por até três letras são grafadas como nome próprio (apenas a primeira letra é maiúscula) ou somente com maiúsculas.",
+            "d) A abreviatura deve ser feita seguindo a regra geral: primeira sílaba da palavra + ponto abreviativo.",
+            "e) Siglas partidárias são separadas por parênteses das siglas dos estados."
+        ],
+        "correctAnswer": "b"
+    },
+    {
+        "question": "56. (GOVERNO-DF / POLÍCIA PENAL / 2022) Em '[...] eles respondem mal a penalizações [...]', o termo em destaque tem o mesmo sentido que '[...] teoria em 'Hoje está calor. Mal posso esperar para ir à praia.'",
+        "options": [
+            "a) Correto",
+            "b) Errado"
+        ],
+        "correctAnswer": "a"
+    },
+    {
+        "question": "57. (ITEP-RN / ASS. TÉC. ADMINISTRAÇÃO / 2021) Analise as expressões em destaque nos trechos a seguir e assinale a alternativa correta quanto ao que se afirma: ‘A única diferença é que na última, a pessoa consegue dominar suas próprias emoções a fim de ter relações melhores com as outras pessoas’; '[...] saberemos reagir situações de forma mais adequada e produtiva.’",
+        "options": [
+            "a) O “a” em “a fim” deveria estar junto da palavra “fim”, ou seja, a grafia está inadequada nesse caso.",
+            "b) Em “a fim”, diferente de em “a situações”, o “a” antecede uma palavra do gênero masculino. Portanto, somente nesse caso o “a” é uma preposição.",
+            "c) Em “a situações”, o “a” deveria estar acentuado para formar uma crase, pois é uma preposição.",
+            "d) “a situações” complementa a ideia do verbo. Sendo assim, o “a” é o artigo que define gênero do substantivo subsequente.",
+            "e) “A fim de” poderia ser substituída por “para”. Toda a expressão “a fim de” indica finalidade."
+        ],
+        "correctAnswer": "e"
+    },
+    {
+        "question": "58. (IF-ES / 2019) Por que amamos tanto os carboidratos? A única alternativa seguinte em que o uso do “por que” NÃO se justifica pelo mesmo motivo pelo qual é usado no título do texto de referência é:",
+        "options": [
+            "a) Por que a obesidade se tornou um problema de saúde pública em escala mundial?",
+            "b) Não refletimos com frequência nem quando nem por que devemos comer carboidrato.",
+            "c) Então, por que será que a relação com o sabor é tão determinante nos hábitos alimentares?",
+            "d) Nutricionistas indagam por que os pacientes estão procurando uma dieta de emagrecimento.",
+            "e) A difusão de hábitos alimentares mais saudáveis é uma causa por que devemos nos mobilizar."
+        ],
+        "correctAnswer": "e"
+    },
+    {
+        "question": "59. (SEPLAG-RECIFE / 2019) Está clara e correta a redação deste livre comentário sobre o texto: Equipe Português Estratégia Concursos, Felipe Luccas Na antiguidade clássica, onde o intento da pintura realista prevalecia, mesmo assim ela não alcançava ser tão fotográfica.",
+        "options": [
+            "a) Correto",
+            "b) Errado"
+        ],
+        "correctAnswer": "b"
+    }
+];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function showQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            document.getElementById("question-container").style.display = "none";
+            document.querySelector(".result-container").style.display = "block";
+            document.getElementById("result-text").innerHTML = `Você acertou ${score} de ${questions.length} perguntas.`;
+            return;
+        }
+
+        const question = questions[currentQuestionIndex];
+        const questionContainer = document.getElementById("question-container");
+
+        questionContainer.innerHTML = `    
+            <p><strong>${question.question}</strong></p>
+            ${question.options.map((option, index) => 
+                `<div class="option" onclick="checkAnswer('${String.fromCharCode(97 + index)}')">${option}</div>`
+            ).join('')}
+        `;
+    }
+
+    function checkAnswer(selectedAnswer) {
+        const question = questions[currentQuestionIndex];
+
+        if (selectedAnswer === question.correctAnswer) {
+            score++;
+        }
+
+        currentQuestionIndex++;
+        showQuestion();
+    }
+
+    function restartQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        document.querySelector(".result-container").style.display = "none";
+        document.getElementById("question-container").style.display = "block";
+        showQuestion();
+    }
+
+    showQuestion();
+</script>
+<a href="index.html">PÁGINA INICIAL</a>
+</body>
+</html>
